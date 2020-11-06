@@ -1,0 +1,59 @@
+url: ashutoshgngwr.github.io
+
+collections:
+  pages:
+    output: true
+    permalink: /:name
+    sitemap_priority: 0.9
+  posts:
+    output: true
+    permalink: /:year/:month/:day/:title
+    sitemap_priority: 0.8
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: page
+  - scope:
+      path: ""
+      type: posts
+    values:
+      type: post
+
+# compress output content
+sass:
+  style: compressed
+
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  ignore:
+    envs: ["development"]
+
+# disable Jekyll's syntax highlighting
+# https://help.github.com/en/github/working-with-github-pages/about-github-pages-and-jekyll#syntax-highlighting
+kramdown:
+  syntax_highlighter_opts:
+    disable: true
+
+exclude:
+  - "vendor/"
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "README.md"
+  - "LICENSE"
+
+# Theme specific stuff
+x:
+  author: Ashutosh Gangwar
+  description: Personal thoughts, opinions and experiences.
+  google_analytics_id: UA-88871509-1
+  social:
+    url: https://ashutoshgngwr.github.io
+    twitter: https://twitter.com/ashutoshgngwr
+    twitter_short: ashutoshgngwr # in Twitter Card and Web Manifest
+    github: https://github.com/ashutoshgngwr
+    linkedin: https://linkedin.com/in/ashutoshgngwr
+    rss: https://ashutoshgngwr.github.io/feed.xml

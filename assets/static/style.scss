@@ -1,0 +1,7 @@
+---
+layout: null
+---
+
+$static-res-dir: "{{ '/assets/static' | relative_url }}";
+
+@import "main";

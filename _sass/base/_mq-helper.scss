@@ -1,0 +1,31 @@
+$breakpoints: (
+  mobile: 600px,
+  tablet: 768px,
+  desktop: 992px,
+);
+
+@mixin breakpoint($from: false, $until: false) {
+  $query: "only screen";
+  @if $from {
+    $fromBP: map-get($breakpoints, $from);
+    @if $fromBP == null {
+      @error "breakpoint '" + $from + "' not found!";
+    }
+
+    $query: $query + " and (min-width: " + $fromBP + ")";
+  }
+
+  @if $until {
+    $untilBP: map-get($breakpoints, $until);
+    @if $untilBP == null {
+      @error "breakpoint '" + $until + "' not found!";
+    }
+
+    $untilBP: $untilBP - 1px;
+    $query: $query + " and (max-width: " + $untilBP + ")";
+  }
+
+  @media #{$query} {
+    @content;
+  }
+}

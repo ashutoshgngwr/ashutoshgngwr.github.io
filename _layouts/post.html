@@ -1,0 +1,12 @@
+---
+layout: page
+---
+<article class="post">
+  <h1 id="{{ page.title | slugify }}">{{ page.title | escape_once }}</h1>
+  <div class="meta">
+    <small>{{ page.date | date: "%B %e, %Y" }}</small>
+    <small>{{ page.content | strip_html | number_of_words }} words</small>
+  </div>
+  <hr />
+  {{ page.content }}
+</article>

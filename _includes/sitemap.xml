@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>{{ '/' | absolute_url }}</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <priority>1.00</priority>
+  </url>
+  {%- for collection in site.collections -%}
+  {%- for page in site[collection.label] %}
+  <url>
+    <loc>{{ page.url | absolute_url | xml_escape }}</loc>
+    <lastmod>{{ page.date | date_to_xmlschema }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>{{ collection.sitemap_priority }}</priority>
+  </url>
+  {%- endfor %}
+  {%- endfor %}
+</urlset>

@@ -1,0 +1,120 @@
+::-webkit-scrollbar {
+  width: 0.4rem;
+  height: 0.4rem;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 0.4rem;
+}
+
+html,
+body {
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Personal prefernece: footer should be placed at the bottom of the page, even
+ * if the page content is shorter than the available height of the viewport. */
+footer {
+  justify-self: end;
+  margin-top: auto;
+}
+
+section {
+  margin: 1rem 0;
+}
+
+p {
+  margin: 0.8em 0;
+}
+
+img,
+svg {
+  max-width: 100%;
+  border: none;
+  vertical-align: middle;
+}
+
+ul,
+ol {
+  margin: 0.8em 0;
+  padding: 0 0 0 2em;
+}
+
+li p {
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+blockquote {
+  margin: 0.8em 0;
+  padding: 0.8em 0.8em 0.8em 1.6em;
+  border-left-width: 0.1rem;
+  border-left-style: solid;
+  border-radius: 0 0.25rem 0.25rem 0;
+
+  p {
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+pre > code {
+  display: block;
+  padding: 0.8em 1.6em;
+  margin: 0.8em 0;
+  overflow-x: auto;
+  border-radius: 0.25rem;
+}
+
+:not(pre) > code {
+  padding: 0 0.25em;
+  border-radius: 0.15rem;
+}
+
+table {
+  margin: 0.8em auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-bottom-width: 0.075rem;
+  border-bottom-style: solid;
+
+  td,
+  th {
+    text-align: left;
+    padding: 0.25em 0.75em;
+    border-left-width: 0.075rem;
+    border-left-style: solid;
+
+    &:last-child {
+      border-right-width: 0.075rem;
+      border-right-style: solid;
+    }
+  }
+}
+
+hr {
+  display: block;
+  margin: 1em 0;
+  border-width: 0.075rem 0 0;
+  border-top-style: solid;
+}
+
+dd {
+  margin: 0 0 0 1.6em;
+}

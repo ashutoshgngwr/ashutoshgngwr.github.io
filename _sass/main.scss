@@ -1,0 +1,115 @@
+@import "base/mq-helper";
+@import "base/normalize";
+@import "base/layout";
+@import "base/typography";
+@import "base/colors";
+@import "theme-switch";
+
+.enforce-max-content-width {
+  box-sizing: border-box;
+  max-width: 38rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+pre {
+  div.view-file {
+    @include font-family-sans-serif;
+    text-align: right;
+  }
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--color-bg-secondary);
+  box-shadow: 0 0.1rem 0.25rem rgba(0, 0, 0, 0.05),
+    0 0.1rem 0.25rem rgba(0, 0, 0, 0.1);
+
+  .enforce-max-content-width {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+
+    a.title {
+      color: var(--color-text);
+      font-size: 1.25rem;
+      font-weight: 200;
+      @include font-family-serif;
+
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
+
+    label.theme-switch {
+      margin-left: auto;
+      justify-self: end;
+      display: block;
+    }
+  }
+}
+
+main {
+  margin: 1rem auto;
+
+  article.post div.meta {
+    display: flex;
+    flex-direction: row;
+
+    small:first-child {
+      margin-right: auto;
+    }
+  }
+}
+
+footer {
+  margin-bottom: 1rem;
+  clear: both;
+
+  p {
+    float: left;
+    @include breakpoint($until: mobile) {
+      float: none;
+      text-align: center;
+    }
+  }
+
+  p.social-icons {
+    float: right;
+    @include breakpoint($until: mobile) {
+      float: none;
+    }
+
+    a {
+      margin-right: 0.5rem;
+      opacity: 0.8;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+
+      svg {
+        height: 1.25rem;
+        width: 1.25rem;
+
+        // since devices with lower resolution will typically use an imprecise
+        // pointing device such as fingers on touchscreens
+        @include breakpoint($until: desktop) {
+          height: 1.5rem;
+          width: 1.5rem;
+        }
+      }
+    }
+  }
+}

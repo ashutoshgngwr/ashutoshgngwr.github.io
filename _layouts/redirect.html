@@ -1,0 +1,18 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+<html>
+
+<head>
+  {% if page.href and page.href != empty -%}
+  <meta http-equiv="refresh" content="0; URL='{{ page.href }}'" />
+  {%- endif %}
+  <title>Redirecting</title>
+</head>
+
+<body>
+  If you are not automatically redirected, click <a href="{{ page.href }}">here</a>.
+</body>
+
+</html>

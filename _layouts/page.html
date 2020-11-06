@@ -1,0 +1,41 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+<html lang="en">
+
+{% include head.html -%}
+
+<body>
+  <header>
+    <div class="enforce-max-content-width">
+      <a class="title" href="{{ '/' | relative_url }}">{{ site.x.author }}</a>
+      <label class="theme-switch">
+        <input type="checkbox" onchange="toggleTheme(this.checked)" />
+        {%- include icons/moon.svg -%}
+        {%- include icons/sun.svg -%}
+      </label>
+    </div>
+  </header>
+  <main class="enforce-max-content-width">
+    {{ content }}
+  </main>
+  <footer class="enforce-max-content-width">
+    <p class="social-icons">
+      {%- assign handles = 'github,linkedin,twitter,rss' | split: ',' -%}
+      {%- for handle in handles %}
+      {% if site.x.social[handle] and site.x.social[handle] != empty -%}
+      <a target="_blank" href="{{ site.x.social[handle] }}">
+        {% assign icon = 'icons/' | append: handle | append: '.svg' -%}
+        {%- include {{ icon }} %}
+      </a>
+      {%- endif %}
+      {%- endfor %}
+    </p>
+    <p>&copy; {{ site.time | date: '%Y'  }}</p>
+  </footer>
+
+  {% include scripts.html -%}
+</body>
+
+</html>
