@@ -25,7 +25,7 @@ layout: compress
       {%- assign handles = 'github,linkedin,twitter,rss' | split: ',' -%}
       {%- for handle in handles %}
       {% if site.x.social[handle] and site.x.social[handle] != empty -%}
-      <a target="_blank" href="{{ site.x.social[handle] }}">
+      <a target="_blank" rel="noopener" href="{{ site.x.social[handle] }}">
         {% assign icon = 'icons/' | append: handle | append: '.svg' -%}
         {%- include {{ icon }} %}
       </a>

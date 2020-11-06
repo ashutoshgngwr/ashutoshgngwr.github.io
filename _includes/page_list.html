@@ -1,9 +1,11 @@
 <ul>
   {%- for page in site.pages %}
   <li>
-    {%- assign target = "_self" -%}
-    {%- if page.href -%}{%- assign target = "_blank" -%}{%- endif %}
-    <a target="{{ target }}" href="{{ page.url | relative_url }}">{{ page.title | escape_once }}</a>
+    {%- assign extra_attrs = "" -%}
+    {%- if page.href -%}
+    {%- assign extra_attrs = 'target="_blank" rel="noopener"' -%}
+    {%- endif %}
+    <a {{ extra_attrs }} href="{{ page.url | relative_url }}">{{ page.title | escape_once }}</a>
   </li>
   {%- endfor %}
 </ul>
