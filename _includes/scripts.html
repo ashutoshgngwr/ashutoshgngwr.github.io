@@ -157,13 +157,15 @@
 
 {% if jekyll.environment != "development" && site.x.google_analytics_id -%}
 <!-- Google analytics -->
-<script src="https://www.googletagmanager.com/gtag/js?id={{ site.x.google_analytics_id }}"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag("js", new Date());
-  gtag("config", "{{ site.x.google_analytics_id }}");
+  window.ga =
+    window.ga ||
+    function () {
+      (ga.q = ga.q || []).push(arguments);
+    };
+  ga.l = +new Date();
+  ga("create", "{{ site.x.google_analytics_id }}", "auto");
+  ga("send", "pageview");
 </script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
 {%- endif %}
