@@ -75,9 +75,6 @@
 body {
   background: var(--color-bg);
   color: var(--color-text);
-
-  // for SVGs, too tired to think about unintended consequences
-  fill: var(--color-text);
 }
 
 a {
@@ -99,6 +96,10 @@ a {
   &:focus {
     outline: thin dotted;
   }
+}
+
+svg {
+  fill: currentColor;
 }
 
 code,
