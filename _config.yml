@@ -1,4 +1,14 @@
-url: ashutoshgngwr.github.io
+x: # Theme specific stuff
+  author: Ashutosh Gangwar
+  description: Personal thoughts, opinions and experiences.
+  google_analytics_id: UA-88871509-1
+  social:
+    url: https://ashutoshgngwr.github.io
+    twitter: https://twitter.com/ashutoshgngwr
+    twitter_short: ashutoshgngwr # in Twitter Card and Web Manifest
+    github: https://github.com/ashutoshgngwr
+    linkedin: https://linkedin.com/in/ashutoshgngwr
+    rss: https://ashutoshgngwr.github.io/feed.xml
 
 collections:
   pages:
@@ -46,16 +56,3 @@ exclude:
   - "Gemfile.lock"
   - "README.md"
   - "LICENSE"
-
-# Theme specific stuff
-x:
-  author: Ashutosh Gangwar
-  description: Personal thoughts, opinions and experiences.
-  google_analytics_id: UA-88871509-1
-  social:
-    url: https://ashutoshgngwr.github.io
-    twitter: https://twitter.com/ashutoshgngwr
-    twitter_short: ashutoshgngwr # in Twitter Card and Web Manifest
-    github: https://github.com/ashutoshgngwr
-    linkedin: https://linkedin.com/in/ashutoshgngwr
-    rss: https://ashutoshgngwr.github.io/feed.xml
