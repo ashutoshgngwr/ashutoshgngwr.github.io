@@ -39,9 +39,10 @@ header {
 
     a.title {
       color: var(--color-text);
-      font-size: 1.25rem;
-      font-weight: 200;
+
       @include font-family-serif;
+      font-weight: 200;
+      font-size: 1.25rem;
 
       &:hover {
         color: var(--color-primary);
@@ -61,7 +62,9 @@ header {
 }
 
 main {
-  margin: 1rem auto;
+  section.homepage:not(:first-of-type) {
+    margin-top: 3rem;
+  }
 
   article.post div.meta {
     display: flex;
