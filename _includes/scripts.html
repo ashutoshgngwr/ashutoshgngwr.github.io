@@ -47,6 +47,23 @@
   }
 </script>
 
+<script>
+  document.querySelectorAll("a[href^='#']").forEach(function (item) {
+    item.onclick = function (e) {
+      e.preventDefault();
+      let target_id = this.href.substring(this.href.indexOf("#") + 1);
+      let target = document.querySelector('[id="' + target_id + '"]');
+      if (target) {
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+          inline: "center",
+        });
+      }
+    };
+  });
+</script>
+
 {% if page.mathjax -%}
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 {%- endif %}
