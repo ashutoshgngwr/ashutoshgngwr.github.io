@@ -11,7 +11,7 @@
     <loc>{{ page.url | absolute_url | xml_escape }}</loc>
     <lastmod>{{ page.date | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>{{ collection.sitemap_priority }}</priority>
+    <priority>{{ collection.sitemap_priority | default: 0.0 }}</priority>
   </url>
   {%- endfor %}
   {%- endfor %}

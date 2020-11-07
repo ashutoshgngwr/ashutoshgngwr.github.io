@@ -39,9 +39,10 @@ header {
 
     a.title {
       color: var(--color-text);
+      letter-spacing: 0.1rem;
 
       @include font-family-serif;
-      font-weight: 200;
+      font-weight: 400;
       font-size: 1.25rem;
 
       &:hover {

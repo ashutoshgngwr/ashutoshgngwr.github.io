@@ -2,17 +2,20 @@
 
 ## License
 
-Unless explicitly stated,
+Unless stated explicitly,
 
-- all the content in the `_posts` and `_pages` directories, and
-  `assets/resume.pdf` is covered by the [Creative Commons Attribution-ShareAlike
-  4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
-- all other content in this repository is covered by the [GNU General Public
-  License v3.0](LICENSE)
+- all the files belonging to the works listed in the [**Third-party
+  assets**](#third-party-assets) section, are covered by licenses provided in
+  their respective repositories
+- `assets/resume.pdf` and all the content in the `_posts` and `_pages`
+   directories are covered by the [Creative Commons Attribution-ShareAlike 4.0
+   International License](http://creativecommons.org/licenses/by-sa/4.0/)
+- all other source files in this repository are covered by the [GNU General
+  Public License v3.0](LICENSE)
 
 ## Third-party assets
 
-This Jekyll template/theme uses the following third-party assets
+This Jekyll template/theme uses the following third-party assets.
 
 - [asterisk icon](https://thenounproject.com/term/asterisk/379466) from the Noun
   Project
