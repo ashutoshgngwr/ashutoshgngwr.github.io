@@ -46,6 +46,10 @@ header {
       &:hover {
         color: var(--color-primary);
       }
+
+      &:active {
+        color: var(--color-primary-variant);
+      }
     }
 
     label.theme-switch {
@@ -100,7 +104,6 @@ footer {
       width: 1.25rem;
       margin-right: 0.5rem;
       color: var(--color-text);
-      opacity: 0.8;
 
       // since devices with lower resolution will typically use an imprecise
       // pointing device such as fingers on touchscreens
@@ -114,7 +117,11 @@ footer {
       }
 
       &:hover {
-        opacity: 1;
+        color: var(--color-primary);
+      }
+
+      &:active {
+        color: var(--color-primary-variant);
       }
     }
   }
