@@ -7,16 +7,15 @@ mathjax: true
 ---
 
 Preemptible VMs are a lot cheaper than non-preemptible on-demand VMs on all
-major public clouds. By a lot, I mean up to 80% more affordable
-<sup>[1][ref-1], [2][ref-2], [3][ref-3]</sup>. New businesses are emerging
-<sup>[4][ref-4]</sup> that allow enterprises to run their critical workloads
-on preemptible VMs by increasing the tolerance for the faults in the underlying
-infrastructure. With Kubernetes, it is rather easy to use preemptible instances
-since Kubernetes is moderately reactive to infrastructure faults.
+major public clouds. By a lot, I mean up to 80% more affordable. [^1] [^2] [^3]
+New businesses are emerging [^4] that allow enterprises to run their critical
+workloads on preemptible VMs by increasing the tolerance for the faults in the
+underlying infrastructure. With Kubernetes, it is rather easy to use preemptible
+instances since Kubernetes is moderately reactive to infrastructure faults.
 
 It is going to be a brief hypothesis since I don't have a Kubernetes cluster
 running to test it and derive any useful conclusions. My primary goal here is to
-document this for myself.<sup>[5][ref-5]</sup>
+document this for myself.[^5]
 
 ## Prerequisites
 
@@ -47,14 +46,14 @@ set this up, you can refer to [this how-to][kops-ig-spot-how-to].
 ### Cluster Autoscaler
 
 Instance Groups map to [Auto Scaling Groups in AWS][aws-ec2-asg], and [Instance
-Groups in GCE][gcp-ig].<sup>[6][ref-6]</sup> Cluster Autoscaler uses these
-vendor dependent APIs to scale an Instance Group. Cluster Autoscaler can work
-with many Instance Groups in a cluster, but it should be able to discover them.
+Groups in GCE][gcp-ig].[^6] Cluster Autoscaler uses these vendor dependent APIs
+to scale an Instance Group. Cluster Autoscaler can work with many Instance
+Groups in a cluster, but it should be able to discover them.
 
 To specify each Instance Group individually, we can pass them to the Cluster
 Autoscaler using `--nodes` flag. Alternatively, we can also set it up for
 auto-discovery using `--node-group-auto-discovery`. As the documentation states
-<sup>[7][ref-7]</sup>
+[^7]
 
 > **`nodes`**:  
 > sets min, max size and other configuration data for a node group in a format
@@ -75,20 +74,20 @@ interface, use [`cloudLabels`][kops-ig-cloud-labels] in Instance Group spec.
 Once [cluster autoscaler][cluster-autoscaler] can discover these Instance
 Groups, we can move on to setting up a suitable expander. An **expander**
 defines the strategy used when autoscaling a cluster with many Instance
-Groups.<sup>[8][ref-8]</sup>
+Groups.[^8]
 
 #### Price-based expander
 
 It is only available for GCP GCE/GKE clusters. The price-based expander uses
-pseudo costs of instances to score Instance Groups.<sup>[9][ref-9]</sup> Since
-it doesn't use the actual cost matrix, it won't work out for our use-case as it
-should consider both preemptible and non-preemptible instance to cost the same.
+pseudo costs of instances to score Instance Groups.[^9] Since it doesn't use the
+actual cost matrix, it won't work out for our use-case as it should consider
+both preemptible and non-preemptible instance to cost the same.
 
 #### Priority-based expander
 
 A priority-based expander uses a user-defined priority list to score the
-Instance Groups in the cluster.<sup>[10][ref-10]</sup> To declare priorities,
-create a **ConfigMap** with name `cluster-autoscaler-priority-expander`, e.g.
+Instance Groups in the cluster.[^10] To declare priorities, create a
+**ConfigMap** with name `cluster-autoscaler-priority-expander`, e.g.
 
 ```yaml
 apiVersion: v1
@@ -133,6 +132,19 @@ following is a list of a few additional resources to take into consideration.
   frequencies
 - [GCE Preemptible VM limitations][gce-preemptible-limitations]
 
+## Footnotes
+
+[^1]: [Amazon EC2 Spot Instances Pricing][ref-1]
+[^2]: [Google Cloud Preemptible Virtual Machines][ref-2]
+[^3]: [Microsoft Azure Linux Virtual Machines Pricing][ref-3]
+[^4]: [Spot by NetApp][ref-4]
+[^5]: [Stonks][ref-5]
+[^6]: [Kops Instance Group Resource][ref-6]
+[^7]: [List of parameters accepted by Kubernetes Cluster Autoscaler][ref-7]
+[^8]: [What are expanders in Kubernetes Cluster Autoscaler?][ref-8]
+[^9]: [Cost-based node group ranking function for Cluster Autoscaler (Proposal)][ref-9]
+[^10]: [Priority based expander for Cluster Autoscaler][ref-10]
+
 [kops]: https://github.com/kubernetes/kops
 [cluster-autoscaler]: https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler
 [kops-instance-groups]: https://github.com/kubernetes/kops/blob/master/docs/instance_groups.md
@@ -144,11 +156,11 @@ following is a list of a few additional resources to take into consideration.
 [aws-spot-advisor]: https://aws.amazon.com/ec2/spot/instance-advisor/
 [gce-preemptible-limitations]: https://cloud.google.com/compute/docs/instances/preemptible#limitations
 [ref-1]: https://aws.amazon.com/ec2/spot/pricing/
-[ref-2]: https://cloud.google.com/preemptible-vms#predictable-and-low-cost
-[ref-3]: https://azure.microsoft.com/en-in/pricing/details/virtual-machines/linux/#text-heading3
+[ref-2]: https://cloud.google.com/preemptible-vms
+[ref-3]: https://azure.microsoft.com/en-in/pricing/details/virtual-machines/linux/
 [ref-4]: https://spot.io
 [ref-5]: http://stankmemes.com/
-[ref-6]: https://kops.sigs.k8s.io/manifests_and_customizing_via_api/#instance-groups
+[ref-6]: https://kops.sigs.k8s.io/instance_groups/
 [ref-7]: https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-the-parameters-to-ca
 [ref-8]: https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders
 [ref-9]: https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/proposals/pricing.md

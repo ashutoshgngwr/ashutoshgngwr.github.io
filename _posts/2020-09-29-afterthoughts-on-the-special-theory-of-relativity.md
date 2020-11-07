@@ -16,8 +16,8 @@ mind-boggling afterthoughts.
 ## Maxwell’s Equations
 
 [Maxwell’s Equations][maxwells-equations] give out the value for the constant
-speed at which electromagnetic waves propagate in the vacuum.<sup>[1][1]</sup>
-This mathematical constant is popularly known as the speed of light, $$c$$. Long
+speed at which electromagnetic waves propagate in the vacuum.[^1] This
+mathematical constant is popularly known as the speed of light, $$c$$. Long
 after its discovery, scientists measured the speed of light which came out to be
 the same as predicted by Maxwell’s Equations.
 
@@ -34,14 +34,13 @@ waves propagate.
 Later in 1905, Einstein contradicted the presence of Aether in his [Special
 Theory of Relativity][special-relativity]. It stated that light or any other
 electromagnetic waves don’t propagate through Aether, or rather, the speed of
-light is a universal constant.<sup>[2][2]</sup> All observers will measure it
-precisely the same in their reference frames, irrespective of the motion of its
-source.
+light is a universal constant.[^2] All observers will measure it precisely the
+same in their reference frames, irrespective of the motion of its source.
 
 Let us consider yourself as a stationary observer and that I am travelling
 towards you with a flashlight at $$10\%$$ the speed of light. Now if you were to
 measure the speed of light emitted from the flashlight, you will still find it
-to be $$c$$ rather than $$1.1 \times c$$.<sup>[3][3]</sup>
+to be $$c$$ rather than $$1.1 \times c$$.[^3]
 
 To put it other words, if the speed of light remains constant for both
 observers, it must imply that at least one or both quantities constituting the
@@ -61,7 +60,7 @@ $$\gamma$$ is the Lorentz Factor, $$t$$ is the time as measured by the source,
 and $$t'$$ is the dilated time as observed by the observer. Lorentz Factor
 arises in the derivation of the [Lorentz transformation][lorentz-transformation]
 used to transform measurements across inertial reference frames in Special
-Relativity.<sup>[4][4]</sup>
+Relativity.[^4]
 
 $$
 \beta = \frac{v}{c} \\
@@ -85,6 +84,13 @@ future, all you have to do is travel very fast for some time and then return
 home. If you also read the [General Theory of Relativity][general-relativity]
 before leaving, you may find it worthwhile to orbit around an object
 considerably more massive than Earth.
+
+## Footnotes
+
+[^1]: [MSU: Maxwell's equations and light &mdash; Lecture Notes][1]
+[^2]: [Virginia Tech: Special Relativity Lecture Notes &mdash; Section 8][2]
+[^3]: [WSU (YouTube): Space, Time, and Einstein with Brian Greene][3]
+[^4]: [Wikipedia: Lorentz Factor][4]
 
 [maxwells-equations]: https://en.wikipedia.org/wiki/Maxwell%27s_equations
 [aether]: https://en.wikipedia.org/wiki/Aether_(classical_element)
