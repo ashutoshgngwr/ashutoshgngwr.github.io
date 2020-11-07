@@ -52,6 +52,18 @@ body {
   }
 }
 
+%multiple-immediate-heading-style {
+  margin-top: 1.5rem;
+}
+
+@for $i from 1 through 5 {
+  @for $j from $i + 1 through 6 {
+    h#{$i} + h#{$j} {
+      @extend %multiple-immediate-heading-style;
+    }
+  }
+}
+
 h1 {
   font-size: 1.8rem;
   margin-top: 0;
@@ -75,18 +87,6 @@ h5 {
 
 h6 {
   font-size: 0.833rem;
-}
-
-%multiple-immediate-heading-style {
-  margin-top: 1.5rem;
-}
-
-@for $i from 1 through 5 {
-  @for $j from $i + 1 through 6 {
-    h#{$i} + h#{$j} {
-      @extend %multiple-immediate-heading-style;
-    }
-  }
 }
 
 a {

@@ -28,7 +28,7 @@
     setTheme(isDark ? THEME_DARK : THEME_BRIGHT);
   }
 
-  document.addEventListener("DOMContentLoaded", function () {
+  window.addEventListener("DOMContentLoaded", function () {
     let activeTheme = localStorage.getItem(KEY_THEME) || THEME_BRIGHT;
     setTheme(activeTheme);
     let isDark = activeTheme === THEME_DARK;
@@ -47,20 +47,70 @@
   }
 </script>
 
+<!-- smooth scrolling for anchor links on the same page -->
 <script>
-  document.querySelectorAll("a[href^='#']").forEach(function (item) {
-    item.onclick = function (e) {
-      e.preventDefault();
-      let target_id = this.href.substring(this.href.indexOf("#") + 1);
-      let target = document.querySelector('[id="' + target_id + '"]');
-      if (target) {
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
-          inline: "center",
-        });
-      }
-    };
+  window.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll("a[href^='#']").forEach(function (item) {
+      item.addEventListener("click", function (e) {
+        e.preventDefault();
+        let target_id = this.href.substring(this.href.indexOf("#") + 1);
+        let target = document.querySelector('[id="' + target_id + '"]');
+        if (target) {
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+            inline: "center",
+          });
+        }
+      });
+    });
+  });
+</script>
+
+<!--
+  Adds an anchor link to all the headings > h1 in the `article.post` container.
+  Clicking the link sets the window location hash to the ID of the parent
+  heading. It then copies the new window location to the clipboard.
+-->
+<script>
+  function updateWindowLocationHash(hash) {
+    if (history.pushState) {
+      history.pushState(null, null, hash);
+    } else {
+      location.hash = hash;
+    }
+  }
+
+  function copyToClipboard(data) {
+    if (!navigator.clipboard) {
+      return;
+    }
+
+    navigator.clipboard.writeText(data);
+  }
+
+  window.addEventListener("DOMContentLoaded", function () {
+    let article = document.querySelector("article.post");
+    if (!article) {
+      return;
+    }
+
+    let anchor = document.createElement("a");
+    anchor.classList.add("anchor");
+    anchor.title = "Copy permalink to the clipboard";
+    anchor.innerHTML = `{% include icon.svg id='link' %}`.trim();
+
+    let selector = "h2[id], h3[id], h4[id], h5[id], h6[id]";
+    article.querySelectorAll(selector).forEach(function (item) {
+      let link = anchor.cloneNode(true);
+      link.href = "#" + item.id;
+      item.appendChild(link);
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        updateWindowLocationHash(this.href);
+        copyToClipboard(window.location);
+      });
+    });
   });
 </script>
 
@@ -140,7 +190,7 @@
      highlighting.
 -->
 <script>
-  function loadCodeBlocks() {
+  window.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll("pre[data-src]").forEach(function (item) {
       let url = item.getAttribute("data-src");
       let viewURL = item.getAttribute("data-view") || url;
@@ -167,9 +217,7 @@
 
       xhr.send();
     });
-  }
-
-  document.addEventListener("DOMContentLoaded", loadCodeBlocks);
+  });
 </script>
 
 {% if jekyll.environment != "development" && site.x.google_analytics_id -%}

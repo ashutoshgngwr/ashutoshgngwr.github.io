@@ -49,7 +49,7 @@
   <meta name="twitter:description" content="{{ page.excerpt | strip_html | truncatewords: 20 }}" />
   {%- endif %}
 
-  {%- if page.image %}
+  {%- if page.image and page.image != empty %}
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="{{ '/assets/posts/img/' | append: page.image | absolute_url }}" />
   {%- else %}
@@ -66,7 +66,7 @@
   <meta property="og:description" content="{{ page.excerpt | strip_html | truncatewords: 20 }}" />
   {%- endif %}
 
-  {%- if page.image %}
+  {%- if page.image and page.image != empty %}
   <meta property="og:image" content="{{ '/assets/posts/img/' | append: page.image | absolute_url }}" />
   {%- else %}
   <meta property="og:image" content="{{ '/assets/static/img/favicon-192x192.png' | absolute_url }}" />
