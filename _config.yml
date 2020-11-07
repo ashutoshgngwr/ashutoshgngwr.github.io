@@ -9,6 +9,8 @@ collections:
     output: true
     permalink: /:year/:month/:day/:title
     sitemap_priority: 0.8
+  icons:
+    output: false
 
 defaults:
   - scope:

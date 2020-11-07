@@ -12,8 +12,8 @@ layout: compress
       <a class="title" href="{{ '/' | relative_url }}">{{ site.x.author }}</a>
       <label class="theme-switch">
         <input type="checkbox" onchange="toggleTheme(this.checked)" />
-        {%- include icons/moon.svg -%}
-        {%- include icons/sun.svg -%}
+        {%- include icon.svg id='moon' %}
+        {%- include icon.svg id='sun' %}
       </label>
     </div>
   </header>
@@ -26,14 +26,20 @@ layout: compress
       {%- for handle in handles %}
       {% if site.x.social[handle] and site.x.social[handle] != empty -%}
       <a target="_blank" rel="noopener" title="{{ handle | capitalize }}" href="{{ site.x.social[handle] }}">
-        {% assign icon = 'icons/' | append: handle | append: '.svg' -%}
-        {%- include {{ icon }} %}
+        {%- include icon.svg id=handle %}
       </a>
       {%- endif %}
       {%- endfor %}
     </p>
     <p class="copyright">&copy; {{ site.time | date: '%Y'  }}</p>
   </footer>
+
+  <!-- inline all SVG icons to make them reuse efficient -->
+  <svg style="display: none;">
+    {%- for icon in site.icons %}
+    <symbol id="{{ icon.title | downcase }}">{{ icon.content }}</symbol>
+    {%- endfor %}
+  </svg>
 
   {% include scripts.html -%}
 </body>
