@@ -28,7 +28,7 @@
     setTheme(isDark ? THEME_DARK : THEME_BRIGHT);
   }
 
-  window.addEventListener("DOMContentLoaded", function () {
+  addEventListener("DOMContentLoaded", function () {
     let activeTheme = localStorage.getItem(KEY_THEME) || THEME_BRIGHT;
     setTheme(activeTheme);
     let isDark = activeTheme === THEME_DARK;
@@ -49,12 +49,11 @@
 
 <!-- smooth scrolling for anchor links on the same page -->
 <script>
-  window.addEventListener("DOMContentLoaded", function () {
+  addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll("a[href^='#']").forEach(function (item) {
       item.addEventListener("click", function (e) {
         e.preventDefault();
-        let target_id = this.href.substring(this.href.indexOf("#") + 1);
-        let target = document.querySelector('[id="' + target_id + '"]');
+        let target = document.querySelector(`[id="${this.hash.substring(1)}"]`);
         if (target) {
           target.scrollIntoView({
             behavior: "smooth",
@@ -89,9 +88,9 @@
     navigator.clipboard.writeText(data);
   }
 
-  window.addEventListener("DOMContentLoaded", function () {
-    let article = document.querySelector("article.post");
-    if (!article) {
+  addEventListener("DOMContentLoaded", function () {
+    let main = document.querySelector("main");
+    if (!main) {
       return;
     }
 
@@ -101,9 +100,9 @@
     anchor.innerHTML = `{% include icon.svg id='link' %}`.trim();
 
     let selector = "h2[id], h3[id], h4[id], h5[id], h6[id]";
-    article.querySelectorAll(selector).forEach(function (item) {
+    main.querySelectorAll(selector).forEach(function (item) {
       let link = anchor.cloneNode(true);
-      link.href = "#" + item.id;
+      link.href = `#${item.id}`;
       item.appendChild(link);
       link.addEventListener("click", function (e) {
         e.preventDefault();
@@ -115,7 +114,7 @@
 </script>
 
 {% if page.mathjax -%}
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_HTML"></script>
 {%- endif %}
 
 <script src="/assets/static/highlight.js" onload="hljs.initHighlightingOnLoad();"></script>
@@ -152,7 +151,7 @@
     let element = document.createElement("code");
     element.innerHTML = normalizeWhiteSpace(code);
     if (language) {
-      element.classList.add("language-" + language);
+      element.classList.add(`language-${language}`);
     }
 
     return element;
@@ -161,8 +160,6 @@
   function createFileLinkElement(url) {
     let element = document.createElement("a");
     element.innerHTML = "View file";
-    element.target = "_blank";
-    element.rel = "noopener";
     element.href = url;
 
     let container = document.createElement("div");
@@ -190,7 +187,7 @@
      highlighting.
 -->
 <script>
-  window.addEventListener("DOMContentLoaded", function () {
+  addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll("pre[data-src]").forEach(function (item) {
       let url = item.getAttribute("data-src");
       let viewURL = item.getAttribute("data-view") || url;
@@ -201,7 +198,7 @@
       let xhr = new XMLHttpRequest();
       xhr.open("GET", url);
       xhr.addEventListener("load", function () {
-        let code = "error: unable to load the resource at " + url;
+        let code = `error: unable to load the resource at "${url}"`;
         if (this.responseText) {
           code = this.responseText
             .split("\n")
@@ -219,18 +216,3 @@
     });
   });
 </script>
-
-{% if jekyll.environment != "development" && site.x.google_analytics_id -%}
-<!-- Google analytics -->
-<script>
-  window.ga =
-    window.ga ||
-    function () {
-      (ga.q = ga.q || []).push(arguments);
-    };
-  ga.l = +new Date();
-  ga("create", "{{ site.x.google_analytics_id }}", "auto");
-  ga("send", "pageview");
-</script>
-<script async src="https://www.google-analytics.com/analytics.js"></script>
-{%- endif %}

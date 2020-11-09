@@ -1,3 +1,5 @@
+"use strict";
+
 const CACHE = "default";
 
 self.addEventListener("install", function (event) {
@@ -34,36 +36,39 @@ self.addEventListener("fetch", function (event) {
     return;
   }
 
-  if (event.request.url.startsWith("/assets/static")) {
-    /* use cache and revalidate strategy for static resources */
-    event.respondWith(
-      caches.match(event.request).then(function (response) {
-        if (response) {
-          event.waitUntil(updateCache(event.request));
-          return response;
-        } else {
-          return updateCache(event.request);
-        }
-      })
-    );
-  } else {
-    /* use network first strategy for all other resources */
-    event.respondWith(
-      updateCache(event.request).catch(function () {
-        return caches.match(event.request).then(function (response) {
-          if (response) {
-            return response;
-          }
-          return caches.match("/offline");
-        });
-      })
-    );
-  }
+  event.respondWith(
+    event.request.url.startsWith(`${self.location.origin}/assets/static`)
+      ? serveCacheThenRevalidate(event)
+      : serveNetworkAndUpdateCache(event)
+  );
 });
+
+function serveCacheThenRevalidate(event) {
+  return caches.match(event.request).then(function (response) {
+    if (response) {
+      event.waitUntil(updateCache(event.request));
+      return response;
+    } else {
+      return updateCache(event.request);
+    }
+  });
+}
+
+function serveNetworkAndUpdateCache(event) {
+  return updateCache(event.request).catch(function () {
+    return caches.match(event.request).then(function (response) {
+      return response || caches.match("/offline");
+    });
+  });
+}
 
 function updateCache(request) {
   return caches.open(CACHE).then(function (cache) {
     return fetch(request).then(function (response) {
+      if (!response.ok) {
+        return response;
+      }
+
       return cache.put(request, response.clone()).then(function () {
         return response;
       });

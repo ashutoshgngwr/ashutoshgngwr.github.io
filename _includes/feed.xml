@@ -8,7 +8,7 @@
   <updated>{{ site.time | date_to_xmlschema }}</updated>
   <author>
     <name>{{ site.x.author | xml_escape }}</name>
-    <uri>{{ site.x.social.url | xml_escape }}</uri>
+    <uri>{{ site.x.author_url | xml_escape }}</uri>
   </author>
 
   {%- for post in site.posts %}

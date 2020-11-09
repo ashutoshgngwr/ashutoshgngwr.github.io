@@ -42,8 +42,9 @@
   {%- endif %}
 
   <!-- Twitter card -->
-  <meta name="twitter:creator" content="@{{ site.x.social.twitter_short }}" />
-  <meta name="twitter:site" content="@{{ site.x.social.twitter_short }}" />
+  {%- assign twitter = site.x.social | where: 'name', 'twitter' | map: 'username' %}
+  <meta name="twitter:creator" content="@{{ twitter }}" />
+  <meta name="twitter:site" content="@{{ twitter }}" />
   <meta name="twitter:title" content="{{ page.title | default: site.x.author }}" />
   {%- if page.excerpt and page.excerpt != empty %}
   <meta name="twitter:description" content="{{ page.excerpt | strip_html | truncatewords: 20 }}" />
@@ -74,7 +75,7 @@
 
   {%- if page.type == 'post' %}
   <meta property="og:type" content="article" />
-  <meta property="article:author" content="{{ site.x.social.url }}" />
+  <meta property="article:author" content="{{ site.x.author_url }}" />
   <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
   {%- if page.tags and page.tags.size > 0 %}
   <meta property="article:section" content="{{ page.tags[0] }}" />

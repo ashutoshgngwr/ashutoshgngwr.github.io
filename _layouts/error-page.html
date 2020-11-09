@@ -2,7 +2,7 @@
 layout: page
 ---
 {%- if page.emoji and page.emoji != empty %}
-<h1>{{ page.emoji }}</h1>
+<h1 aria-hidden="true">{{ page.emoji }}</h1>
 <h2>{{ page.title }}</h2>
 {%- else %}
 <h1>{{ page.title }}</h1>

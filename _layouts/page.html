@@ -7,10 +7,12 @@ layout: compress
 {% include head.html -%}
 
 <body>
-  <header>
+  <header class="page-header">
     <div class="enforce-max-content-width">
-      <a class="title" href="{{ '/' | relative_url }}">{{ site.x.author }}</a>
-      <label class="theme-switch">
+      <a class="title" href="{{ '/' | relative_url }}" aria-label="go to homepage">
+        {{ site.x.author }}
+      </a>
+      <label class="theme-switch" title="Toggle dark mode" aria-label="toggle dark mode">
         <input type="checkbox" onchange="toggleTheme(this.checked)" />
         {%- include icon.svg id='moon' %}
         {%- include icon.svg id='sun' %}
@@ -22,13 +24,12 @@ layout: compress
   </main>
   <footer class="enforce-max-content-width">
     <p class="social-icons">
-      {%- assign handles = 'github,linkedin,twitter,rss' | split: ',' -%}
-      {%- for handle in handles %}
-      {% if site.x.social[handle] and site.x.social[handle] != empty -%}
-      <a target="_blank" rel="noopener" title="{{ handle | capitalize }}" href="{{ site.x.social[handle] }}">
-        {%- include icon.svg id=handle %}
+      {%- for handle in site.x.social %}
+      {%- assign defaultPrefix = handle.name | append: '.com' %}
+      <a aria-label="Visit my {{ handle.name }} handle" title="{{ handle.name | capitalize }}"
+        href="https://{{ handle.prefix | default: defaultPrefix }}/{{ handle.username }}">
+        {%- include icon.svg id=handle.name %}
       </a>
-      {%- endif %}
       {%- endfor %}
     </p>
     <p class="copyright">&copy; {{ site.time | date: '%Y'  }}</p>

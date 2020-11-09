@@ -202,12 +202,12 @@ you can also rate it on the [Play Store][noice-play-store].
 [code-coverage]: https://en.wikipedia.org/wiki/Code_coverage
 [gradle]: https://gradle.org/
 [codecov]: https://codecov.io
-[noice-tests]: https://github.com/ashutoshgngwr/noice/tree/master/app/src/test/java/com/github/ashutoshgngwr/noice
+[noice-tests]: https://github.com/ashutoshgngwr/noice/tree/0.2.1/app/src/test/java/com/github/ashutoshgngwr/noice
 [travis-test-job-log]: https://travis-ci.org/ashutoshgngwr/noice/builds/546710205#L1384
 [fastlane]: https://fastlane.tools
 [fastlane-android-docs]: https://docs.fastlane.tools/getting-started/android/setup/
 [fastlane-utp-docs]: https://docs.fastlane.tools/actions/upload_to_play_store/
 [google-sa-keys]: https://cloud.google.com/iam/docs/creating-managing-service-account-keys
-[full-travis-conf]: https://github.com/ashutoshgngwr/noice/blob/master/.travis.yml
+[full-travis-conf]: https://github.com/ashutoshgngwr/noice/blob/0.2.1/.travis.yml
 [noice-gh]: https://github.com/ashutoshgngwr/noice
 [noice-play-store]: https://play.google.com/store/apps/details?id=com.github.ashutoshgngwr.noice

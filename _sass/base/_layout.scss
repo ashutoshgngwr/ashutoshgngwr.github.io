@@ -25,12 +25,24 @@ footer {
   margin-top: auto;
 }
 
-section, article {
-  margin: 2rem 0;
+%reset-margins-touching-parent-edges {
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+section,
+article {
+  margin: 3rem 0;
+  @extend %reset-margins-touching-parent-edges;
 }
 
 p {
-  margin: 1em 0;
+  margin: 1.5em 0;
 }
 
 img,
@@ -42,41 +54,29 @@ svg {
 
 ul,
 ol {
-  margin: 0.8em 0;
+  margin: 1em 0;
   padding: 0 0 0 2em;
 }
 
 li p {
-  &:first-child {
-    margin-top: 0;
-  }
-
-  &:last-child {
-    margin-bottom: 0;
-  }
+  @extend %reset-margins-touching-parent-edges;
 }
 
 blockquote {
-  margin: 0.8em 0;
-  padding: 0.8em 0.8em 0.8em 1.6em;
+  margin: 1.5em 0;
+  padding: 1em 1em 1em 2em;
   border-left-width: 0.1rem;
   border-left-style: solid;
   border-radius: 0 0.25rem 0.25rem 0;
 
   p {
-    &:first-child {
-      margin-top: 0;
-    }
-
-    &:last-child {
-      margin-bottom: 0;
-    }
+    @extend %reset-margins-touching-parent-edges;
   }
 }
 
 pre > code {
   display: block;
-  padding: 0.8em 1.6em;
+  padding: 1.25em 2em;
   margin: 0.8em 0;
   overflow-x: auto;
   border-radius: 0.25rem;
@@ -116,5 +116,5 @@ hr {
 }
 
 dd {
-  margin: 0 0 0 1.6em;
+  margin: 0 0 0 2em;
 }

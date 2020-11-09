@@ -1,14 +1,18 @@
 x: # Theme specific stuff
   author: Ashutosh Gangwar
+  author_url: https://ashutoshgngwr.github.io
   description: Personal thoughts, opinions and experiences.
-  google_analytics_id: UA-88871509-1
   social:
-    url: https://ashutoshgngwr.github.io
-    twitter: https://twitter.com/ashutoshgngwr
-    twitter_short: ashutoshgngwr # in Twitter Card and Web Manifest
-    github: https://github.com/ashutoshgngwr
-    linkedin: https://linkedin.com/in/ashutoshgngwr
-    rss: https://ashutoshgngwr.github.io/feed.xml
+    - name: github
+      # prefix: github.com ## default is '{name}.com'
+      username: ashutoshgngwr
+    - name: linkedin
+      prefix: linkedin.com/in
+      username: ashutoshgngwr
+    - name: twitter
+      username: ashutoshgngwr
+    - name: goodreads
+      username: ashutoshgngwr
 
 collections:
   pages:

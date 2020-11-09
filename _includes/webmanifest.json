@@ -1,6 +1,6 @@
 {
   "name": "{{ site.x.author }}",
-  "short_name": "{{ site.x.social.twitter_short }}",
+  "short_name": "{{ site.x.social | where: 'name', 'twitter' | map: 'username' }}",
   "display": "standalone",
   "description": "{{ site.x.description }}",
   "start_url": "{{ '/' | relative_url }}",
