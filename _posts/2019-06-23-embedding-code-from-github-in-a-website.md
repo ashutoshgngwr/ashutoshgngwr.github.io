@@ -87,9 +87,24 @@ to make that happen.
 
 ### The code
 
-<pre data-start="36" data-end="83" data-lang="javascript"
-  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/0cdc831f7b0e1d2f3f73e014fba707f02569d841/_layouts/default.html"
-  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/0cdc831f7b0e1d2f3f73e014fba707f02569d841/_layouts/default.html#L36-L83"
+<pre data-start="190" data-end="217" data-lang="javascript"
+  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/scripts.html"
+  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/scripts.html#L190-L217"
+></pre>
+
+<pre data-start="150" data-end="158" data-lang="javascript"
+  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/scripts.html"
+  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/scripts.html#L150-L158"
+></pre>
+
+<pre data-start="128" data-end="148" data-lang="javascript"
+  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/scripts.html"
+  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/scripts.html#L128-L148"
+></pre>
+
+<pre data-start="160" data-end="169" data-lang="javascript"
+  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/scripts.html"
+  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/scripts.html#L160-169"
 ></pre>
 
 [jekyll]: https://jekyllrb.com/

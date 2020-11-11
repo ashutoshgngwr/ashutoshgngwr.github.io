@@ -42,12 +42,16 @@ service worker. If you modify your service worker code, the browser will treat
 it as a different service worker and it will receive its own `install` event.
 `install` event is a safe place to cache static resources that don't change
 often. There are some best practices mentioned in [MDN][sw-mdn] and [Google
-Developers][sw-lifecycle] articles but here's how I did it. The
+Developers][sw-lifecycle] articles, but here's how I did it. The
 `self.skipWaiting()` call activates it as soon as it finishes installing.
 
-<pre data-start="1" data-end="27" data-lang="javascript"
-  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/8dc7a8b1c977ec714a6c9c3b410b62d6c15fa7e8/service-worker.js"
-  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/8dc7a8b1c977ec714a6c9c3b410b62d6c15fa7e8/service-worker.js#L1-L27"
+The following snippet also contains some Liquid (Jekyll) template code embedded
+in JavaScript comments. The template essentially generates a list of static
+files to add to cache during service worker installation.
+
+<pre data-start="5" data-end="24" data-lang="javascript"
+  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/service-worker.js"
+  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/service-worker.js#L5-L24"
 ></pre>
 
 #### Activate
@@ -59,9 +63,9 @@ cleanup because this site doesn't generate that much data.
 new version of the service worker (if available) and takes over any active
 clients that were previously being handled by an older version.
 
-<pre data-start="29" data-end="31" data-lang="javascript"
-  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/8dc7a8b1c977ec714a6c9c3b410b62d6c15fa7e8/service-worker.js"
-  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/8dc7a8b1c977ec714a6c9c3b410b62d6c15fa7e8/service-worker.js#L29-L31"
+<pre data-start="26" data-end="28" data-lang="javascript"
+  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/service-worker.js"
+  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/service-worker.js#L26-L28"
 ></pre>
 
 #### Fetch
@@ -73,9 +77,24 @@ different resources. The first one serves the assets directly from the cache and
 triggers a cache update for every request. The second serves all other resources
 directly from the network and caches them for offline access.
 
-<pre data-start="33" data-lang="javascript"
-  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/8dc7a8b1c977ec714a6c9c3b410b62d6c15fa7e8/service-worker.js"
-  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/8dc7a8b1c977ec714a6c9c3b410b62d6c15fa7e8/service-worker.js#L33-L77"
+<pre data-start="30" data-end="44" data-lang="javascript"
+  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/service-worker.js"
+  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/service-worker.js#L30-L44"
+></pre>
+
+<pre data-start="46" data-end="55" data-lang="javascript"
+  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/service-worker.js"
+  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/service-worker.js#L46-L55"
+></pre>
+
+<pre data-start="57" data-end="63" data-lang="javascript"
+  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/service-worker.js"
+  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/service-worker.js#L57-L63"
+></pre>
+
+<pre data-start="65" data-end="77" data-lang="javascript"
+  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/service-worker.js"
+  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/service-worker.js#L65-L77"
 ></pre>
 
 #### Sync
@@ -96,11 +115,13 @@ on my reading list.
 To make your PWA installable (browsers asking users to add a website to home
 screen), you'll need to add a [Web Manifest][web-man-mdn] in addition to the
 service worker. It is a JSON file with the [predefined schema][web-man-mdn].
-e.g.
+
+**Note**: I am using Liquid (Jekyll) template code to inject appropriate values
+when GitHub Pages generates my site.
 
 <pre data-lang="json"
-  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/8dc7a8b1c977ec714a6c9c3b410b62d6c15fa7e8/assets/site.webmanifest"
-  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/8dc7a8b1c977ec714a6c9c3b410b62d6c15fa7e8/assets/site.webmanifest"
+  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/webmanifest.json"
+  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/webmanifest.json"
 ></pre>
 
 ## Conclusion
