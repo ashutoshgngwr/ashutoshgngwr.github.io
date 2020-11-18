@@ -1,6 +1,6 @@
 label.theme-switch {
   padding: 0.5rem;
-  font-size: 1rem; // for icon class
+  font-size: 0; // clicking on the label is selecting whitespace (text) in firefox
 
   border: 0.1rem var(--color-primary-accent) solid;
   border-radius: 50%;
@@ -16,23 +16,25 @@ label.theme-switch {
 
   svg {
     display: block;
+    width: 1rem;
+    height: 1rem;
   }
 
   input {
     display: none;
 
-    ~ svg:last-of-type {
+    ~ svg:first-of-type {
       display: none;
     }
 
     &:checked {
       ~ svg {
         &:first-of-type {
-          display: none;
+          display: block;
         }
 
         &:last-of-type {
-          display: block;
+          display: none;
         }
       }
     }
