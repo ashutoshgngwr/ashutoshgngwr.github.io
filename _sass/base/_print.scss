@@ -1,0 +1,78 @@
+@media print {
+  :root {
+    --color-bg: #ffffff;
+    --color-bg-secondary: #ffffff;
+    --color-primary: #000000;
+    --color-primary-variant: #000000;
+    --color-primary-accent: #ffffff;
+    --color-text: #000000;
+
+    --color-code-red: #ca1243;
+    --color-code-blue: #4078f2;
+    --color-code-yellow: #c18401;
+    --color-code-purple: #a626a4;
+    --color-code-orange: #d75f00;
+    --color-code-green: #50a14f;
+    --color-code-gray: #a0a1a7;
+  }
+
+  html,
+  body {
+    font-size: 14pt;
+  }
+
+  a {
+    &:after {
+      content: " [#{$base-url}" attr(href) "]";
+      font-size: 0.8333em;
+      word-wrap: break-word;
+    }
+
+    &[href^="http:"],
+    &[href^="https:"] {
+      &:after {
+        content: " [" attr(href) "]";
+      }
+    }
+
+    &.footnote:after {
+      content: "";
+    }
+
+    &.reversefootnote {
+      display: none;
+
+      :after {
+        content: "";
+      }
+    }
+  }
+
+  hr {
+    opacity: 1;
+  }
+
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  code,
+  kbd,
+  samp {
+    border: 0.1rem solid;
+    border-radius: 0.25rem;
+  }
+
+  blockquote {
+    border: 0.1rem solid;
+    border-radius: 0.25rem;
+  }
+
+  table {
+    td,
+    th {
+      border: 0.1rem solid;
+    }
+  }
+}

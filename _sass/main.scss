@@ -3,6 +3,7 @@
 @import "base/layout";
 @import "base/typography";
 @import "base/colors";
+@import "base/print";
 @import "theme-switch";
 
 .enforce-max-content-width {
@@ -36,6 +37,12 @@ header.page-header {
   box-shadow: 0 0.1rem 0.25rem rgba(0, 0, 0, 0.05),
     0 0.1rem 0.25rem rgba(0, 0, 0, 0.1);
 
+  @media print {
+    position: static;
+    box-shadow: none;
+    border-bottom: 0.1rem solid var(--color-text);
+  }
+
   .enforce-max-content-width {
     display: flex;
     flex-direction: row;
@@ -64,6 +71,10 @@ header.page-header {
       margin-left: auto;
       justify-self: end;
       display: block;
+
+      @media print {
+        display: none;
+      }
     }
   }
 }
@@ -75,8 +86,13 @@ main {
     margin-left: 0.5rem;
     display: none;
     position: absolute;
+
     @include breakpoint($until: desktop) {
       display: inline;
+    }
+
+    @media print {
+      display: none !important;
     }
 
     svg {
@@ -117,6 +133,10 @@ footer {
 
   @include breakpoint($until: mobile) {
     flex-direction: column;
+  }
+
+  @media print {
+    display: none;
   }
 
   p.copyright {

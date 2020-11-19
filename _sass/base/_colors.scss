@@ -21,27 +21,27 @@
   --color-code-orange: #d75f00;
   --color-code-green: #50a14f;
   --color-code-gray: #a0a1a7;
-}
 
-:root[data-theme="dark"] {
-  $color-bg: #283149;
-  $color-primary: #9ec1f7;
-  $color-primary-dark: #659df2;
+  &[data-theme="dark"] {
+    $color-bg: #283149;
+    $color-primary: #9ec1f7;
+    $color-primary-dark: #659df2;
 
-  --color-bg: #{$color-bg};
-  --color-bg-secondary: #{lighten($color-bg, 5%)};
-  --color-primary: #{$color-primary};
-  --color-primary-variant: #{$color-primary-dark};
-  --color-primary-accent: #{transparentize($color-primary, 0.7)};
-  --color-text: #fbfbfb;
+    --color-bg: #{$color-bg};
+    --color-bg-secondary: #{lighten($color-bg, 5%)};
+    --color-primary: #{$color-primary};
+    --color-primary-variant: #{$color-primary-dark};
+    --color-primary-accent: #{transparentize($color-primary, 0.7)};
+    --color-text: #fbfbfb;
 
-  --color-code-red: #ff5370;
-  --color-code-blue: #82aaff;
-  --color-code-yellow: #ffcb6b;
-  --color-code-purple: #c792ea;
-  --color-code-orange: #f78c6c;
-  --color-code-green: #c3e88d;
-  --color-code-gray: #676e95;
+    --color-code-red: #ff5370;
+    --color-code-blue: #82aaff;
+    --color-code-yellow: #ffcb6b;
+    --color-code-purple: #c792ea;
+    --color-code-orange: #f78c6c;
+    --color-code-green: #c3e88d;
+    --color-code-gray: #676e95;
+  }
 }
 
 // need to use an iterator on the following selectors since selecting multiple
