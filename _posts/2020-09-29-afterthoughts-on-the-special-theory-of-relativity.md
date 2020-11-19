@@ -62,11 +62,11 @@ arises in the derivation of the [Lorentz transformation][lorentz-transformation]
 used to transform measurements across inertial reference frames in Special
 Relativity.[^4]
 
-$$
-\beta = \frac{v}{c} \\
-\gamma = \frac{1}{\sqrt{1 - \beta^2}} \\
-t' = \gamma \times t
-$$
+$$\beta = \frac{v}{c}$$
+
+$$\gamma = \frac{1}{\sqrt{1 - \beta^2}}$$
+
+$$t' = \gamma \times t$$
 
 Now let us consider a quantum of light, a photon moving towards an observer.
 From the photon's frame of reference, it is stationary while the observer is

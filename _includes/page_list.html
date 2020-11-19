@@ -1,11 +1,15 @@
-<ul>
-  {%- for page in site.pages %}
-  <li>
-    {%- assign url = page.url -%}
-    {%- unless url contains '://' -%}
-    {%- assign url = url | relative_url -%}
-    {%- endunless %}
-    <a href="{{ url }}">{{ page.title | escape_once }}</a>
-  </li>
-  {%- endfor %}
-</ul>
+<section itemscope itemtype="https://schema.org/BreadcrumbList">
+  <h1 itemprop="name">Resources</h1>
+  <ul>
+    {%- assign position = 1 -%}
+    {%- for page in site.pages %}
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a href="{{ page.url | relative_url }}" itemprop="item">
+        <span itemprop="name">{{ page.title | escape_once }}</span>
+      </a>
+      <meta itemprop="position" content="{{ position }}" />
+      {%- assign position = position | plus: 1 %}
+    </li>
+    {%- endfor %}
+  </ul>
+</section>

@@ -95,9 +95,10 @@
     }
 
     let anchor = document.createElement("a");
-    anchor.classList.add("anchor");
     anchor.title = "Copy permalink to the clipboard";
     anchor.innerHTML = `{% include icon.svg id='link' %}`.trim();
+    anchor.classList.add("anchor");
+    anchor.setAttribute("aria-hidden", true);
 
     let selector = "h2[id], h3[id], h4[id], h5[id], h6[id]";
     main.querySelectorAll(selector).forEach(function (item) {
