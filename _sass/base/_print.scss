@@ -1,19 +1,19 @@
 @media print {
   :root {
-    --color-bg: #ffffff;
-    --color-bg-secondary: #ffffff;
-    --color-primary: #000000;
-    --color-primary-variant: #000000;
-    --color-primary-accent: #ffffff;
-    --color-text: #000000;
+    --color-bg: #ffffff !important;
+    --color-bg-secondary: #ffffff !important;
+    --color-primary: #000000 !important;
+    --color-primary-variant: #000000 !important;
+    --color-primary-accent: #ffffff !important;
+    --color-text: #000000 !important;
 
-    --color-code-red: #ca1243;
-    --color-code-blue: #4078f2;
-    --color-code-yellow: #c18401;
-    --color-code-purple: #a626a4;
-    --color-code-orange: #d75f00;
-    --color-code-green: #50a14f;
-    --color-code-gray: #a0a1a7;
+    --color-code-red: #ca1243 !important;
+    --color-code-blue: #4078f2 !important;
+    --color-code-yellow: #c18401 !important;
+    --color-code-purple: #a626a4 !important;
+    --color-code-orange: #d75f00 !important;
+    --color-code-green: #50a14f !important;
+    --color-code-gray: #a0a1a7 !important;
   }
 
   html,
