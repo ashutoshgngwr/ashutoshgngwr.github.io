@@ -38,7 +38,7 @@ layout: compress
   <!-- inline all SVG icons to make them reuse efficient -->
   <svg style="display: none;">
     {%- for icon in site.icons %}
-    <symbol id="{{ icon.title | downcase }}">{{ icon.content }}</symbol>
+    <symbol id="{{ icon.title | slugify }}">{{ icon.content }}</symbol>
     {%- endfor %}
   </svg>
 

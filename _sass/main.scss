@@ -116,6 +116,7 @@ main {
     div.meta {
       display: flex;
       flex-direction: row;
+      color: var(--color-text-secondary);
 
       small:first-of-type {
         margin-right: auto;
@@ -129,7 +130,6 @@ footer {
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
-  opacity: 0.75;
 
   @include breakpoint($until: mobile) {
     flex-direction: column;
@@ -157,7 +157,7 @@ footer {
 
     a {
       margin-right: 0.5em;
-      color: var(--color-text);
+      color: inherit;
       font-size: 1.25rem; // for icon class
 
       // since devices with lower resolution will typically use an imprecise
