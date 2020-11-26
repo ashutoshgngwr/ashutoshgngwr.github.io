@@ -80,6 +80,10 @@ $secondary-text-distance: 15%;
   }
 }
 
+html {
+  scrollbar-color: var(--color-primary-accent) var(--color-bg-secondary);
+}
+
 body {
   background: var(--color-bg);
   color: var(--color-text);
