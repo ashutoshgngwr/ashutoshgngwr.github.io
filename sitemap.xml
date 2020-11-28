@@ -1,4 +1,23 @@
 ---
 layout: compress
 ---
-{%- include sitemap.xml -%}
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>{{ '/' | absolute_url }}</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <priority>1.00</priority>
+  </url>
+  {%- for collection in site.collections -%}
+  {%- if collection.output -%}
+  {%- for page in site[collection.label] %}
+  <url>
+    <loc>{{ page.url | absolute_url | xml_escape }}</loc>
+    <lastmod>{{ page.date | date_to_xmlschema }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>{{ collection.sitemap_priority | default: 0.0 }}</priority>
+  </url>
+  {%- endfor %}
+  {%- endif %}
+  {%- endfor %}
+</urlset>
