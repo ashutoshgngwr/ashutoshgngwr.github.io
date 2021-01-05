@@ -84,19 +84,11 @@ main {
 
   %heading-anchor-style {
     margin-left: 0.5rem;
-    display: none;
-    position: absolute;
-
-    @include breakpoint($until: desktop) {
-      display: inline;
-    }
+    font-size: 0.9em;
+    vertical-align: middle;
 
     @media print {
       display: none !important;
-    }
-
-    svg {
-      font-size: 1rem;
     }
   }
 
@@ -104,10 +96,6 @@ main {
     h#{$i} {
       a.anchor {
         @extend %heading-anchor-style;
-      }
-
-      &:hover a.anchor {
-        display: inline;
       }
     }
   }
