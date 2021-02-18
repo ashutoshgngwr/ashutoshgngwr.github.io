@@ -14,26 +14,38 @@
   let KEY_THEME = "data-theme";
   let THEME_DARK = "dark";
   let THEME_BRIGHT = "bright";
+  let PREFERS_DARK_SCHEME_MQ = "(prefers-color-scheme: dark)";
 
-  function setTheme(theme) {
+  function setTheme(theme, persist) {
     if (theme !== THEME_BRIGHT && theme !== THEME_DARK) {
       return;
     }
 
-    localStorage.setItem(KEY_THEME, theme);
     document.documentElement.setAttribute(KEY_THEME, theme);
+    if (persist === true) {
+      localStorage.setItem(KEY_THEME, theme);
+    }
   }
 
   function toggleTheme(isDark) {
-    setTheme(isDark ? THEME_DARK : THEME_BRIGHT);
+    setTheme(isDark ? THEME_DARK : THEME_BRIGHT, true);
   }
 
-  addEventListener("DOMContentLoaded", function () {
-    let activeTheme = localStorage.getItem(KEY_THEME) || THEME_BRIGHT;
-    setTheme(activeTheme);
+  function getPreferredColorScheme() {
+    return matchMedia && matchMedia(PREFERS_DARK_SCHEME_MQ).matches
+      ? THEME_DARK
+      : THEME_BRIGHT;
+  }
+
+  function onColorSchemeChanged() {
+    let activeTheme = localStorage.getItem(KEY_THEME) || getPreferredColorScheme();
+    setTheme(activeTheme, false);
     let isDark = activeTheme === THEME_DARK;
     document.querySelector("label.theme-switch > input").checked = isDark;
-  });
+  }
+
+  addEventListener("DOMContentLoaded", onColorSchemeChanged);
+  matchMedia(PREFERS_DARK_SCHEME_MQ).addEventListener("change", onColorSchemeChanged);
 </script>
 
 <!-- register service worker -->

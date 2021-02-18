@@ -23,17 +23,17 @@ label.theme-switch {
   input {
     display: none;
 
-    ~ svg:first-of-type {
+    ~ svg:last-of-type {
       display: none;
     }
 
     &:checked {
       ~ svg {
-        &:first-of-type {
+        &:last-of-type {
           display: block;
         }
 
-        &:last-of-type {
+        &:first-of-type {
           display: none;
         }
       }
