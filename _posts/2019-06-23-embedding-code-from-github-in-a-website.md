@@ -13,16 +13,9 @@ messy there due to lack of any usable plugins.
 
 [Jekyll][jekyll] is a static site generator that takes content written in
 [Markdown][markdown] format, processes it, and generates corresponding HTML
-files using defined template files. So the starting lines of my [last
-post][last-post] look something like the following which would then be rendered
-to HTML using a template file.
+files using defined template files.
 
-<pre data-end="9" data-lang="markdown"
-  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/0cdc831f7b0e1d2f3f73e014fba707f02569d841/_posts/2019-06-21-continuos-integration-and-delivery-for-android-apps.md"
-  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/0cdc831f7b0e1d2f3f73e014fba707f02569d841/_posts/2019-06-21-continuos-integration-and-delivery-for-android-apps.md"
-></pre>
-
-So my end goal here was to be able to embed code samples from a GitHub
+My end goal here was to be able to embed code samples from a GitHub
 repository to my posts without a hassle. Before continuing, I should let you
 know that [Markdown][markdown] engines _generally_ allow writing plain HTML
 which is left untouched as the content is injected into HTML templates. As a
