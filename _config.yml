@@ -15,9 +15,9 @@ x: # Theme specific stuff
       username: ashutoshgngwr
 
 collections:
-  pages:
+  links:
     output: true
-    permalink: /:name
+    permalink: /link/:name
     sitemap_priority: 0.9
   posts:
     output: true

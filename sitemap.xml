@@ -12,8 +12,8 @@ layout: compress
   {%- if collection.output -%}
   {%- for page in site[collection.label] %}
   <url>
-    <loc>{{ page.url | absolute_url | xml_escape }}</loc>
-    <lastmod>{{ page.date | date_to_xmlschema }}</lastmod>
+    <loc>{{ page.href | default: page.url | absolute_url | xml_escape }}</loc>
+    <lastmod>{{ page.date | default: site.time | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>{{ collection.sitemap_priority | default: 0.0 }}</priority>
   </url>
