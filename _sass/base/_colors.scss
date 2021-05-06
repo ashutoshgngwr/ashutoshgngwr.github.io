@@ -6,30 +6,8 @@ $accent-transparency: 0.7;
 $secondary-bg-distance: 5%;
 $secondary-text-distance: 15%;
 
+/* dark default */
 :root {
-  $color-bg: #fbfbfb;
-  $color-primary: #0d50bb;
-  $color-primary-light: #347cf0;
-  $color-text: #283149;
-
-  --color-bg: #{$color-bg};
-  --color-bg-secondary: #{darken($color-bg, $secondary-bg-distance)};
-  --color-primary: #{$color-primary};
-  --color-primary-variant: #{$color-primary-light};
-  --color-primary-accent: #{transparentize($color-primary, $accent-transparency)};
-  --color-text: #{$color-text};
-  --color-text-secondary: #{lighten($color-text, $secondary-text-distance)};
-
-  --color-code-red: #ca1243;
-  --color-code-blue: #4078f2;
-  --color-code-yellow: #c18401;
-  --color-code-purple: #a626a4;
-  --color-code-orange: #d75f00;
-  --color-code-green: #50a14f;
-  --color-code-gray: #a0a1a7;
-}
-
-:root[data-theme="dark"] {
   $color-bg: #283149;
   $color-primary: #9ec1f7;
   $color-primary-dark: #659df2;
@@ -50,6 +28,29 @@ $secondary-text-distance: 15%;
   --color-code-orange: #f78c6c;
   --color-code-green: #c3e88d;
   --color-code-gray: #676e95;
+}
+
+:root[data-theme="bright"] {
+  $color-bg: #fbfbfb;
+  $color-primary: #0d50bb;
+  $color-primary-light: #347cf0;
+  $color-text: #283149;
+
+  --color-bg: #{$color-bg};
+  --color-bg-secondary: #{darken($color-bg, $secondary-bg-distance)};
+  --color-primary: #{$color-primary};
+  --color-primary-variant: #{$color-primary-light};
+  --color-primary-accent: #{transparentize($color-primary, $accent-transparency)};
+  --color-text: #{$color-text};
+  --color-text-secondary: #{lighten($color-text, $secondary-text-distance)};
+
+  --color-code-red: #ca1243;
+  --color-code-blue: #4078f2;
+  --color-code-yellow: #c18401;
+  --color-code-purple: #a626a4;
+  --color-code-orange: #d75f00;
+  --color-code-green: #50a14f;
+  --color-code-gray: #a0a1a7;
 }
 
 // need to use an iterator on the following selectors since selecting multiple
