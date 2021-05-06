@@ -4,14 +4,14 @@
 
 $accent-transparency: 0.7;
 $secondary-bg-distance: 5%;
-$secondary-text-distance: 15%;
+$secondary-text-distance: 25%;
 
 /* dark default */
 :root {
   $color-bg: #283149;
   $color-primary: #9ec1f7;
   $color-primary-dark: #659df2;
-  $color-text: #fbfbfb;
+  $color-text: #fcfcfc;
 
   --color-bg: #{$color-bg};
   --color-bg-secondary: #{lighten($color-bg, $secondary-bg-distance)};
@@ -34,7 +34,7 @@ $secondary-text-distance: 15%;
   $color-bg: #fbfbfb;
   $color-primary: #0d50bb;
   $color-primary-light: #347cf0;
-  $color-text: #283149;
+  $color-text: #131313;
 
   --color-bg: #{$color-bg};
   --color-bg-secondary: #{darken($color-bg, $secondary-bg-distance)};

@@ -3,7 +3,7 @@ layout: compress
 ---
 {
   "name": "{{ site.x.author }}",
-  "short_name": "{{ site.x.social | where: 'name', 'twitter' | map: 'username' }}",
+  "short_name": "{{ site.x.social | where: 'name', 'twitter' | map: 'username' | first }}",
   "display": "standalone",
   "description": "{{ site.x.description }}",
   "start_url": "{{ '/' | relative_url }}",

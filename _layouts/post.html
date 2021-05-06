@@ -16,7 +16,7 @@ layout: page
     <h1 id="{{ page.title | slugify }}" itemprop="name headline">{{ page.title | escape_once }}</h1>
     <div class="meta">
       <small>
-        <time datetime="{{ page.date | date: "%Y-%m-%d" }}" itemprop="datePublished">
+        <time datetime="{{ page.date | date: '%Y-%m-%d' }}" itemprop="datePublished">
           {{ page.date | date: "%B %e, %Y" }}
         </time>
       </small>
@@ -29,5 +29,28 @@ layout: page
     <div itemprop="articleBody">
       {{ page.content }}
     </div>
+    <footer>
+      <p>
+        {%- assign post_title = page.title | url_encode %}
+        {%- assign post_url = page.url | absolute_url | url_encode %}
+        &mdash; Share it on
+
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ post_url }}" rel="noopener"
+          title="LinkedIn">LinkedIn</a>,
+
+        {%- assign reddit_params = "url=" | append: post_url %}
+        {%- assign reddit_params = reddit_params | append: "&title=" | append: post_title %}
+        <a href="https://www.reddit.com/submit?{{ reddit_params }}" rel="noopener" title="Reddit">Reddit</a>
+
+        or
+
+        {%- assign twitter_username = site.x.social | where: 'name', 'twitter' | map: 'username' | first %}
+        {%- assign twitter_params = "text=" | append: post_title %}
+        {%- assign twitter_params = twitter_params | append: "&url=" | append: post_url %}
+        {%- assign twitter_params = twitter_params | append: "&via=" | append: twitter_username %}
+        {%- assign twitter_params = twitter_params | append: "&related=" | append: twitter_username %}
+        <a href="https://twitter.com/intent/tweet?{{ twitter_params }}" rel="noopener" title="Twitter">Twitter</a>.
+      </p>
+    </footer>
   </article>
 </div>
