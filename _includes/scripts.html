@@ -246,3 +246,23 @@
     });
   });
 </script>
+
+<!--
+  If vertical scroll offset is greater than 0, add 'floating' class to the page
+  header.
+-->
+<script>
+  let floatingHeaderClass = "floating";
+  function reconcileHeaderStyle() {
+    let header = document.querySelector("header.page-header");
+    if (scrollY > 0) {
+      header.classList.add(floatingHeaderClass);
+    } else {
+      header.classList.remove(floatingHeaderClass);
+    }
+
+    requestAnimationFrame(reconcileHeaderStyle);
+  }
+
+  requestAnimationFrame(reconcileHeaderStyle);
+</script>
