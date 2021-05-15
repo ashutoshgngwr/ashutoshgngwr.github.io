@@ -32,7 +32,7 @@ layout: compress
       </a>
       {%- endfor %}
     </p>
-    <p class="copyright">&copy; {{ site.time | date: '%Y'  }}</p>
+    <p class="copyright">&copy; {{ site.time | date: '%Y' }}</p>
   </footer>
 
   <!-- inline all SVG icons to make them reuse efficient -->
@@ -42,7 +42,11 @@ layout: compress
     {%- endfor %}
   </svg>
 
-  {% include scripts.html -%}
+  <script src="/assets/static/page.js"></script>
+  <script src="/assets/static/highlight.js" onload="hljs.initHighlightingOnLoad();"></script>
+  {% if page.mathjax -%}
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_HTML"></script>
+  {%- endif %}
 </body>
 
 </html>

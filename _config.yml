@@ -1,6 +1,5 @@
 x: # Theme specific stuff
   author: Ashutosh Gangwar
-  author_url: https://ashutoshgngwr.github.io
   description: Personal thoughts, opinions and experiences.
   social:
     - name: github
@@ -31,11 +30,6 @@ defaults:
       path: ""
     values:
       layout: page
-  - scope:
-      path: ""
-      type: posts
-    values:
-      type: post
 
 # compress output content
 sass:
