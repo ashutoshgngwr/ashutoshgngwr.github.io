@@ -1,3 +1,7 @@
+---
+layout: page
+---
+
 <section itemscope itemtype="https://schema.org/Blog">
   <h1>Write-ups</h1>
   {%- assign postsByYear = site.posts | group_by_exp: "post", "post.date | date: '%Y'" -%}

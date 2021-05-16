@@ -7,16 +7,35 @@ layout: compress
 {% include head.html -%}
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <header class="page-header">
-    <div class="enforce-max-content-width">
+  <header class="page-header floating">
+    <div id="navbar" class="enforce-max-content-width">
       <a class="title" href="{{ '/' | relative_url }}" aria-label="go to homepage">
         {{ site.x.author }}
       </a>
-      <label class="theme-switch" title="Toggle bright/dark mode" aria-label="toggle bright or dark mode">
+      <label id="theme-switch" class="switch" title="Toggle bright/dark mode" aria-label="toggle bright or dark mode">
         <input type="checkbox" onchange="toggleTheme(this.checked)" />
         {%- include icon.svg id='moon' %}
         {%- include icon.svg id='sun' %}
       </label>
+      <label id="expand-menu" class="switch" title="Expand/collapse menu" aria-label="expand or collapse menu">
+        <input type="checkbox" onchange="toggleMenu(this.checked)" />
+        {%- include icon.svg id='menu' %}
+        {%- include icon.svg id='cross' %}
+      </label>
+    </div>
+
+
+    <div class="menu enforce-max-content-width">
+      <h2>Links</h2>
+      <ul itemscope itemtype="https://schema.org/SiteNavigationElement">
+        {%- for link in site.data.nav_links %}
+        <li itemprop="name">
+          <a href="{{ link.href | relative_url }}" itemprop="url">
+            {{ link.title | escape_once }}
+          </a>
+        </li>
+        {%- endfor %}
+      </ul>
     </div>
   </header>
   <main class="enforce-max-content-width">

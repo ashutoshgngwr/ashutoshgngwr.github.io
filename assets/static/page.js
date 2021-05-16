@@ -30,7 +30,7 @@ function setTheme(theme) {
   sessionStorage.setItem(KEY_THEME, theme);
 
   let isDark = theme === THEME_DARK;
-  document.querySelector("label.theme-switch > input").checked = isDark;
+  document.querySelector("label#theme-switch > input").checked = isDark;
 }
 
 function toggleTheme(isDark) {
@@ -229,12 +229,13 @@ addEventListener("DOMContentLoaded", function () {
   header.
 --> */
 let floatingHeaderClass = "floating";
+let expandedHeaderClass = "expanded";
 function reconcileHeaderStyle() {
-  let header = document.querySelector("header.page-header");
-  if (scrollY > 0) {
-    header.classList.add(floatingHeaderClass);
+  let classList = document.querySelector("header.page-header").classList;
+  if (scrollY > 0 && !classList.contains(expandedHeaderClass)) {
+    classList.add(floatingHeaderClass);
   } else {
-    header.classList.remove(floatingHeaderClass);
+    classList.remove(floatingHeaderClass);
   }
 
   requestAnimationFrame(reconcileHeaderStyle);
@@ -243,3 +244,16 @@ function reconcileHeaderStyle() {
 addEventListener("DOMContentLoaded", function () {
   requestAnimationFrame(reconcileHeaderStyle);
 });
+
+/* <!--
+  Toggles expanded header state by adding or removing 'expanded' class from
+  the page header element.
+--> */
+function toggleMenu(isExpanded) {
+  let classList = document.querySelector("header.page-header").classList;
+  if (isExpanded) {
+    classList.add(expandedHeaderClass);
+  } else {
+    classList.remove(expandedHeaderClass);
+  }
+}
