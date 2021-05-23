@@ -12,35 +12,38 @@ layout: compress
       <a class="title" href="{{ '/' | relative_url }}" aria-label="go to homepage">
         {{ site.x.author }}
       </a>
-      <label id="theme-switch" class="switch" title="Toggle bright/dark mode" aria-label="toggle bright or dark mode">
+      <label id="theme-toggle" class="switch" title="Toggle bright/dark mode" aria-label="toggle bright or dark mode">
         <input type="checkbox" onchange="toggleTheme(this.checked)" />
         {%- include icon.svg id='moon' %}
         {%- include icon.svg id='sun' %}
       </label>
-      <label id="expand-menu" class="switch" title="Expand/collapse menu" aria-label="expand or collapse menu">
+      <label id="menu-toggle" class="switch" title="Expand/collapse menu" aria-label="expand or collapse menu">
         <input type="checkbox" onchange="toggleMenu(this.checked)" />
-        {%- include icon.svg id='menu' %}
+        {%- include icon.svg id='grid-2x2' %}
         {%- include icon.svg id='cross' %}
       </label>
     </div>
 
-
-    <div class="menu enforce-max-content-width">
-      <h2>Links</h2>
-      <ul itemscope itemtype="https://schema.org/SiteNavigationElement">
-        {%- for link in site.data.nav_links %}
-        <li itemprop="name">
-          <a href="{{ link.href | relative_url }}" itemprop="url">
-            {{ link.title | escape_once }}
-          </a>
-        </li>
-        {%- endfor %}
-      </ul>
+    <div id="menu">
+      <div class="enforce-max-content-width">
+        <h2>Links</h2>
+        <ul itemscope itemtype="https://schema.org/SiteNavigationElement">
+          {%- for link in site.data.nav_links %}
+          <li itemprop="name">
+            <a href="{{ link.href | relative_url }}" itemprop="url">
+              {{ link.title | escape_once }}
+            </a>
+          </li>
+          {%- endfor %}
+        </ul>
+      </div>
     </div>
   </header>
+
   <main class="enforce-max-content-width">
     {{ content }}
   </main>
+
   <footer>
     <div class="enforce-max-content-width">
       <p class="social-icons">
@@ -63,8 +66,8 @@ layout: compress
     {%- endfor %}
   </svg>
 
-  <script src="/assets/static/page.js"></script>
-  <script src="/assets/static/highlight.js" onload="hljs.initHighlightingOnLoad();"></script>
+  <script defer src="/assets/static/highlight.js" onload="hljs.initHighlightingOnLoad();"></script>
+  <script defer src="/assets/static/page.js"></script>
   {% if page.mathjax -%}
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_HTML"></script>
   {%- endif %}

@@ -30,7 +30,7 @@ function setTheme(theme) {
   sessionStorage.setItem(KEY_THEME, theme);
 
   let isDark = theme === THEME_DARK;
-  document.querySelector("label#theme-switch > input").checked = isDark;
+  document.querySelector("label#theme-toggle > input").checked = isDark;
 }
 
 function toggleTheme(isDark) {
@@ -229,10 +229,9 @@ addEventListener("DOMContentLoaded", function () {
   header.
 --> */
 let floatingHeaderClass = "floating";
-let expandedHeaderClass = "expanded";
 function reconcileHeaderStyle() {
   let classList = document.querySelector("header.page-header").classList;
-  if (scrollY > 0 && !classList.contains(expandedHeaderClass)) {
+  if (scrollY > 0) {
     classList.add(floatingHeaderClass);
   } else {
     classList.remove(floatingHeaderClass);
@@ -245,15 +244,43 @@ addEventListener("DOMContentLoaded", function () {
   requestAnimationFrame(reconcileHeaderStyle);
 });
 
-/* <!--
-  Toggles expanded header state by adding or removing 'expanded' class from
-  the page header element.
---> */
-function toggleMenu(isExpanded) {
-  let classList = document.querySelector("header.page-header").classList;
-  if (isExpanded) {
-    classList.add(expandedHeaderClass);
-  } else {
-    classList.remove(expandedHeaderClass);
-  }
+/* <!-- Toggles menu with a circular reveal animation. --> */
+let menuToggleAnimOpts = {
+  duration: 1000,
+  iterations: 1,
+  easing: "ease-in-out",
+};
+
+function toggleMenu(isVisible) {
+  let menu = document.querySelector("#menu");
+  menu.style.display = "block";
+
+  let toggleRect = document
+    .querySelector("#menu-toggle")
+    .getBoundingClientRect();
+
+  let at =
+    toggleRect.left +
+    toggleRect.width / 2 +
+    "px " +
+    (toggleRect.top + toggleRect.height / 2) +
+    "px";
+
+  let radius =
+    Math.ceil(
+      Math.sqrt(toggleRect.left * toggleRect.left + innerHeight * innerHeight)
+    ) + "px";
+
+  menuToggleAnimOpts.direction = isVisible ? "normal" : "reverse";
+  menu
+    .animate(
+      [
+        { clipPath: "circle(0 at " + at + ")" },
+        { clipPath: "circle(" + radius + " at " + at + ")" },
+      ],
+      menuToggleAnimOpts
+    )
+    .addEventListener("finish", function () {
+      menu.style.display = isVisible ? "block" : "none";
+    });
 }
