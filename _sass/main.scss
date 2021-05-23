@@ -221,34 +221,34 @@ main {
 }
 
 body > footer {
-  margin-bottom: 1rem;
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-
-  @include breakpoint($until: mobile) {
-    flex-direction: column;
-  }
+  background: var(--color-bg-secondary);
 
   @media print {
     display: none;
   }
 
-  p.copyright {
-    margin-right: auto;
+  div {
+    margin: 1.5rem auto;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
 
     @include breakpoint($until: mobile) {
-      margin-right: 0;
+      flex-direction: column;
+    }
+  }
+
+  p {
+    margin: 0;
+
+    @include breakpoint($until: mobile) {
+      margin: 1rem 0;
     }
   }
 
   p.social-icons {
     display: flex;
-    margin-left: auto;
-
-    @include breakpoint($until: mobile) {
-      margin-left: 0;
-    }
 
     a {
       margin-right: 0.5em;

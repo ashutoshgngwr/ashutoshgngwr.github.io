@@ -41,17 +41,19 @@ layout: compress
   <main class="enforce-max-content-width">
     {{ content }}
   </main>
-  <footer class="enforce-max-content-width">
-    <p class="social-icons">
-      {%- for handle in site.x.social %}
-      {%- assign defaultPrefix = handle.name | append: '.com' %}
-      <a aria-label="Visit my {{ handle.name }} handle" title="{{ handle.name | capitalize }}"
-        href="https://{{ handle.prefix | default: defaultPrefix }}/{{ handle.username }}">
-        {%- include icon.svg id=handle.name %}
-      </a>
-      {%- endfor %}
-    </p>
-    <p class="copyright">&copy; {{ site.time | date: '%Y' }}</p>
+  <footer>
+    <div class="enforce-max-content-width">
+      <p class="social-icons">
+        {%- for handle in site.x.social %}
+        {%- assign defaultPrefix = handle.name | append: '.com' %}
+        <a aria-label="Visit my {{ handle.name }} handle" title="{{ handle.name | capitalize }}"
+          href="https://{{ handle.prefix | default: defaultPrefix }}/{{ handle.username }}">
+          {%- include icon.svg id=handle.name %}
+        </a>
+        {%- endfor %}
+      </p>
+      <p class="copyright">&copy; {{ site.time | date: '%Y' }}</p>
+    </div>
   </footer>
 
   <!-- inline all SVG icons to make them reuse efficient -->
