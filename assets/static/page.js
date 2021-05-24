@@ -244,43 +244,50 @@ addEventListener("DOMContentLoaded", function () {
   requestAnimationFrame(reconcileHeaderStyle);
 });
 
+function getCircularClipPath(radius, anchor) {
+  let anchorRect = document.querySelector(anchor).getBoundingClientRect();
+
+  return (
+    "circle(" +
+    radius +
+    " at " +
+    (anchorRect.left + anchorRect.width / 2) +
+    "px " +
+    (anchorRect.top + anchorRect.height / 2) +
+    "px"
+  );
+}
+
 /* <!-- Toggles menu with a circular reveal animation. --> */
 let menuToggleAnimOpts = {
   duration: 1000,
   iterations: 1,
   easing: "ease-in-out",
+  fill: "both",
 };
 
 function toggleMenu(isVisible) {
   let menu = document.querySelector("#menu");
-  menu.style.display = "block";
-
-  let toggleRect = document
-    .querySelector("#menu-toggle")
-    .getBoundingClientRect();
-
-  let at =
-    toggleRect.left +
-    toggleRect.width / 2 +
-    "px " +
-    (toggleRect.top + toggleRect.height / 2) +
-    "px";
 
   let radius =
-    Math.ceil(
-      Math.sqrt(toggleRect.left * toggleRect.left + innerHeight * innerHeight)
-    ) + "px";
+    Math.ceil(Math.sqrt(innerWidth * innerWidth + innerHeight * innerHeight)) +
+    "px";
 
-  menuToggleAnimOpts.direction = isVisible ? "normal" : "reverse";
-  menu
-    .animate(
-      [
-        { clipPath: "circle(0 at " + at + ")" },
-        { clipPath: "circle(" + radius + " at " + at + ")" },
-      ],
+  if (isVisible) {
+    menu.animate(
+      [{ clipPath: getCircularClipPath(radius, "#menu-toggle") }],
       menuToggleAnimOpts
-    )
-    .addEventListener("finish", function () {
-      menu.style.display = isVisible ? "block" : "none";
-    });
+    );
+  } else {
+    menu.animate(
+      [{ clipPath: getCircularClipPath(0, "#menu-toggle") }],
+      menuToggleAnimOpts
+    );
+  }
 }
+
+addEventListener("load", function () {
+  let menu = document.querySelector("#menu");
+  menu.style.clipPath = getCircularClipPath(0, "#menu-toggle");
+  menu.style.display = "block";
+});
