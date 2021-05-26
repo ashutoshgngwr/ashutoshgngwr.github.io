@@ -5,4 +5,4 @@ layout: null
 $base-url: "{{ site.url }}";
 $static-res-dir: "{{ '/assets/static' | relative_url }}";
 
-@import "main";
+@import "page";

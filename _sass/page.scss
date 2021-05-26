@@ -59,7 +59,7 @@ label.switch {
 }
 
 pre div.view-file {
-  @include font-family-sans-serif;
+  @extend %font-family-sans-serif;
   text-align: right;
 }
 
@@ -105,7 +105,7 @@ header.page-header {
       margin-right: 1rem;
       z-index: 1000;
 
-      @include font-family-serif;
+      @extend %font-family-serif;
       font-weight: 400;
       font-size: 1.25rem;
 
@@ -186,6 +186,10 @@ header.page-header {
 
 main {
   margin: 2rem auto;
+
+  h1 {
+    margin-top: 1rem;
+  }
 
   %heading-anchor-style {
     margin-left: 0.5rem;

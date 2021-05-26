@@ -16,6 +16,9 @@ self.addEventListener("install", function (event) {
             "{{ file.path | relative_url }}",
             /*  {%- endif -%}
                {%- endfor %} */
+            /* The following files are templated, so they won't appear in 'static_files'.  */
+            "/assets/static/page.css",
+            "/assets/static/page.js",
             "/site.webmanifest",
             "/offline",
           ])

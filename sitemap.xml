@@ -25,7 +25,7 @@ layout: compress
     <loc>{{ page.href | default: page.url | absolute_url | xml_escape }}</loc>
     <lastmod>{{ page.date | default: site.time | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>{{ collection.sitemap_priority | default: 0.5 }}</priority>
+    <priority>{{ page.sitemap_priority | default: collection.sitemap_priority | default: 0.5 }}</priority>
   </url>
   {%- endfor %}
   {%- endif %}

@@ -32,6 +32,29 @@ article {
   @extend %reset-margins-touching-parent-edges;
 }
 
+%heading-style {
+  margin-top: 3rem;
+  margin-bottom: 1.38rem;
+}
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    @extend %heading-style;
+  }
+}
+
+%multiple-immediate-heading-style {
+  margin-top: 1.5rem;
+}
+
+@for $i from 1 through 5 {
+  @for $j from $i + 1 through 6 {
+    h#{$i} + h#{$j} {
+      @extend %multiple-immediate-heading-style;
+    }
+  }
+}
+
 p {
   margin: 1.5em 0;
 }

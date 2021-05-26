@@ -4,7 +4,18 @@ layout: compress
 <!DOCTYPE html>
 <html lang="en">
 
-{% include head.html -%}
+<head>
+  {% include page-meta.html %}
+
+  <link rel="stylesheet" href="{{ '/assets/static/page.css' | relative_url }}" />
+
+  <!-- preload fonts -->
+  {%- for file in site.static_files %}
+  {%- if file.path contains '/assets/static/font' %}
+  <link rel="preload" href="{{ file.path | relative_url }}" as="font" type="font/woff2" crossorigin>
+  {%- endif %}
+  {%- endfor %}
+</head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <header class="page-header floating">
