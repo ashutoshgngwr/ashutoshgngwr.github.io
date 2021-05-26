@@ -7,12 +7,13 @@
 </title>
 
 <!-- additional meta for SEO -->
-{% if page.excerpt and page.excerpt != empty -%}
-<meta name="description" content="{{ page.excerpt | strip_html | truncatewords: 20 }}" />
-{%- elsif page.url == '/' -%}
+{%- assign excerpt = page.excerpt | strip_html | truncatewords: 20 | normalize_whitespace -%}
+{%- if excerpt and excerpt != empty %}
+<meta name="description" content="{{ excerpt }}" />
+{%- elsif page.url == '/' %}
 <meta name="description" content="{{ site.x.description }}" />
 {%- endif %}
-{% if page.tags and page.tags.size > 0 -%}
+{%- if page.tags and page.tags.size > 0 %}
 <meta name="keywords" content="{{ page.tags | join: ', ' }}" />
 {%- endif %}
 
