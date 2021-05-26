@@ -132,8 +132,6 @@ following is a list of a few additional resources to take into consideration.
   frequencies
 - [GCE Preemptible VM limitations][gce-preemptible-limitations]
 
-## Footnotes
-
 [^1]: [Amazon EC2 Spot Instances Pricing][ref-1]
 [^2]: [Google Cloud Preemptible Virtual Machines][ref-2]
 [^3]: [Microsoft Azure Linux Virtual Machines Pricing][ref-3]

@@ -219,6 +219,20 @@ main {
         margin-right: auto;
       }
     }
+
+    div.footnotes {
+      margin: 2rem auto;
+      padding-top: 1rem;
+      border-top: 0.05rem solid var(--color-bg-tertiary);
+      color: var(--color-text-secondary);
+      font-size: 0.833em;
+
+      &:before {
+        content: "Notes";
+        font-size: 1rem;
+        font-weight: 500;
+      }
+    }
   }
 }
 

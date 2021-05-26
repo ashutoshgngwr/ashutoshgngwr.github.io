@@ -85,8 +85,6 @@ home. If you also read the [General Theory of Relativity][general-relativity]
 before leaving, you may find it worthwhile to orbit around an object
 considerably more massive than Earth.
 
-## Footnotes
-
 [^1]: [MSU: Maxwell's equations and light &mdash; Lecture Notes][1]
 [^2]: [Virginia Tech: Special Relativity Lecture Notes &mdash; Section 8][2]
 [^3]: [WSU (YouTube): Space, Time, and Einstein with Brian Greene][3]
