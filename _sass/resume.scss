@@ -1,0 +1,110 @@
+@import "base/normalize";
+@import "base/typography";
+@import "base/colors";
+
+html,
+body {
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+body {
+  box-sizing: border-box;
+  max-width: 50rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+
+  @media print {
+    max-width: 100%;
+    padding: 0;
+    background: none;
+  }
+}
+
+small {
+  font-size: 0.75em;
+}
+
+%default-margin {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+$base-heading-size: 1.4rem;
+$heading-size-gap: 0.2rem;
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-size: $base-heading-size;
+    $base-heading-size: $base-heading-size - $heading-size-gap / $i;
+    @extend %default-margin;
+  }
+}
+
+ul,
+p {
+  @extend %default-margin;
+}
+
+ul {
+  padding-left: 1.75rem;
+}
+
+header {
+  ul {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      display: inline;
+
+      &:not(:last-of-type)::after {
+        content: " \002014 ";
+      }
+    }
+  }
+}
+
+section {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+
+  & > .section-title {
+    padding-bottom: 0.25rem;
+    border-bottom: 0.1rem solid var(--color-text-secondary);
+  }
+
+  .subsection {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    .subsection-header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      @extend %default-margin;
+
+      .subsection-title,
+      .subsection-timeline {
+        margin: 0;
+      }
+
+      .subsection-title {
+        @extend %font-family-sans-serif;
+        font-weight: 500;
+
+        small {
+          font-size: 0.9rem;
+        }
+      }
+
+      .subsection-timeline {
+        font-size: 0.9rem;
+        color: var(--color-text-secondary);
+      }
+    }
+  }
+}

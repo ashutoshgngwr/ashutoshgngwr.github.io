@@ -38,9 +38,20 @@ layout: compress
     <div id="menu">
       <div class="enforce-max-content-width">
         <ul itemscope itemtype="https://schema.org/SiteNavigationElement">
-          {%- for link in site.data.nav_links %}
+          {%- assign nav_links = site.data.nav_links -%}
+
+          {%- for collection in site.collections -%}
+          {%- for page in site[collection.label] -%}
+          {%- if page.in_nav_links -%}
+          {%- assign nav_links = nav_links | push: page -%}
+          {%- endif -%}
+          {%- endfor -%}
+          {%- endfor -%}
+
+          {%- assign nav_links = nav_links | sort: 'title' -%}
+          {%- for link in nav_links %}
           <li itemprop="name">
-            <a href="{{ link.href | relative_url }}" itemprop="url">
+            <a href="{{ link.href | default: link.url | relative_url }}" itemprop="url">
               {{ link.title | escape_once }}
             </a>
           </li>

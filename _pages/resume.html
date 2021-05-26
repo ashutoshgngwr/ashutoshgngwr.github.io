@@ -1,0 +1,77 @@
+---
+layout: compress
+title: Résumé
+in_nav_links: true
+---
+<!DOCTYPE html>
+<html lang="en" data-theme="bright">
+
+<head>
+  {% include page-meta.html %}
+
+  <link rel="stylesheet" href="{{ '/assets/static/resume.css' | relative_url }}" />
+</head>
+
+<body>
+  {% assign resume = site.data.resume -%}
+
+  <header>
+    <h1>
+      {% if resume.url -%}
+      <a href="{{ resume.url | relative_url }}">{{ resume.title }}</a>
+      {%- else %}
+      {{ resume.title }}
+      {%- endif %}
+      {%- if resume.subtitle %}
+      <small>&ndash; {{ resume.subtitle }}</small>
+      {%- endif %}
+    </h1>
+    <ul id="contacts">
+      {%- for contact in resume.contacts %}
+      <li>
+        {% if contact.url -%}
+        <a href="{{ contact.url | relative_url }}">{{ contact.title }}</a>
+        {%- else %}
+        {{ contact.title }}
+        {%- endif %}
+      </li>
+      {%- endfor %}
+    </ul>
+  </header>
+
+  {%- for section in resume.sections %}
+  <section id="{{ section.title | slugify }}">
+    <h2 class="section-title">{{ section.title }}</h2>
+    {%- if section.body %}
+    <div class="section-body">{{ section.body | markdownify }}</div>
+    {%- endif %}
+    {%- for subsection in section.subsections %}
+    <div class="subsection">
+      <div class="subsection-header">
+        <h3 class="subsection-title">
+          {% if subsection.url -%}
+          <a href="{{ subsection.url | relative_url }}">{{ subsection.title }}</a>
+          {%- else %}
+          {{ subsection.title }}
+          {%- endif %}
+          {%- if subsection.subtitle %}
+          <small>&ndash; {{ subsection.subtitle }}</small>
+          {%- endif %}
+        </h3>
+        {% if subsection.timeline -%}
+        <p class="subsection-timeline">{{ subsection.timeline }}</p>
+        {%- endif %}
+      </div>
+      {%- if subsection.body %}
+      <div class="subsection-body">
+        {{ subsection.body | markdownify }}
+      </div>
+      {%- endif %}
+
+    </div>
+    {%- endfor %}
+  </section>
+  {%- endfor %}
+</body>
+
+</html>
