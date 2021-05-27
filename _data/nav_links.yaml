@@ -1,3 +1,8 @@
+# external links to be added in navigation menu
+#
+# - title:
+#   url:
+#   in_sitemap: true # default
 - title: Noice for Android
-  href: /noice
+  url: /noice
   in_sitemap: true

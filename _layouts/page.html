@@ -51,7 +51,7 @@ layout: compress
           {%- assign nav_links = nav_links | sort: 'title' -%}
           {%- for link in nav_links %}
           <li itemprop="name">
-            <a href="{{ link.href | default: link.url | relative_url }}" itemprop="url">
+            <a href="{{ link.url | relative_url }}" itemprop="url">
               {{ link.title | escape_once }}
             </a>
           </li>
