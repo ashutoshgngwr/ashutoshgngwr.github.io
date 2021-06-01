@@ -1,5 +1,4 @@
 title: Ashutosh Gangwar
-subtitle: Software Engineer
 url: https://ashutoshgngwr.github.io
 
 contacts:
@@ -14,79 +13,78 @@ sections:
   - title: Education
     subsections:
       - title: Meerut Institute of Engineering & Technology
+        subtitle: Dr. A.P.J. Abdul Kalam Technical University
         url: https://miet.ac.in
         timeline: Aug 2015 - Jul 2019
-        body: |
-          **Dr. A.P.J. Abdul Kalam Technical University, Uttar Pradesh**<br />
-          _Bachelor of Technology in Computer Science & Engineering_
+        body: Bachelor of Technology in Computer Science and Engineering
 
-  - title: Experience
+  - title: Work Experience
     subsections:
       - title: Zauba Technologies, Bangalore IN
         subtitle: SDE 1 &ndash; Cloud Computing R&amp;D
         url: https://web.archive.org/web/20200725050709/https://zauba.company/
         timeline: Aug 2019 - Feb 2020
         body: |
-          - Worked on a PaaS product with resource consumption based pricing model
-          - Implemented a pod metrics aggregation and caching layer in Golang for an in-house Kubernetes scheduler
-          - Extended ceph-ansible playbooks for automating Ceph cluster deployment and management
-          - Configured the Kubernetes cluster monitoring and application observability stack
+          - Implemented a metrics aggregation and caching layer for the workload
+            scheduler of the PaaS platform
+          - Set up cluster monitoring and observability and implemented a
+            watchdog for monitoring application health
+          - Took initiatives to set up and manage development infrastructure on
+            AWS: tiny Kubernetes and Ceph clusters
+          - Set up a reproducible cluster deployment and expansion
+            automation for Ceph using Ansible
 
       - title: FOSSEE, IIT Bombay, Mumbai IN
         subtitle: Summer Fellow
         url: https://fosse.in/
         timeline: Jun 2018 - Jul 2018
         body: |
-          - Performed general maintenance tasks on an EDA toolkit for the duration of the fellowship
-          - Patched 3 bugs in eSim, an EDA toolkit tailored for electronic circuit simulation, written in Python
-          - Resolved 2 open issues in Kicad, the principal dependency of eSim, written in C++
-          - Automated build process of eSim to encourage continuous integration
+          - Patched known bugs in [eSim](https://esim.fossee.in/home), an
+            electronic circuit simulation toolkit
+          - Resolved open tickets in [Kicad](https://www.kicad.org/), an EDA
+            toolkit and the principal dependency of eSim
+          - Set up build automation to simplify packaging processes for eSim
+            on target operating systems
 
-  - title: Open-Source
+  - title: Projects and Open-source
     subsections:
-      - title: EasyNet
-        subtitle: Project Lead
-        timeline: Oct 2018 - Nov 2018
-        body: |
-          - An employee engagement portal based on the requirement specification provided by IBM
-          - Implemented a server-rendered web service with MVC architecture using Spring, Hibernate and Thymeleaf
-
-      - title: Config Reflector
-        subtitle: Creator
-        timeline: Nov 2019
-        body: |
-          - A Kubernetes controller to automatically copy ConfigMaps and Secrets across namespaces
-          - Implemented a Kubernetes controller in Golang using controller-runtime library and Operator SDK
-
       - title: Noice for Android
         subtitle: Creator
+        url: https://github.com/ashutoshgngwr/noice
         timeline: Jun 2019 - Present
         body: |
-          - An ambience generator with a collection of recorded noise, written in Kotlin
-          - Implemented an Android app using native SDK along with unit & UI tests using JUnit, Espresso & Robolectric
-          - Implemented a Chromecast receiver app in TypeScript using Web Receiver SDK & unit tests using Jest
-          - Grew user acquisition by 350% in past 6 months with an average user rating of 4.6/5 on Play Store
+          - Built an Android application in Kotlin to create ambient sound
+            environments using recorded samples
+          - Implemented a Chromecast Web Receiver Application in JavaScript
+            (TypeScript)
+          - Wrote unit and UI tests and built CI/CD pipelines for both Android
+            and Chromecast Receiver apps
+          - Serving 6.2k active users on Play Store with 4.3/5 average user
+            rating and 319 GitHub stars (as of May 2021)
 
-      - title: swiftp
+      - title: swiftp, a FTP-over-LAN server for Android
         subtitle: Contributor
+        url: https://github.com/ppareit/swiftp
         timeline: May 2017 – Jun 2018
         body: |
-          - A FTP-over-LAN server for Android, written in Java
-          - Implemented concurrent sessions and credential management for multiple users
-          - Implemented server extensions for computing file checksums and enabling partial file transfers
-
-      - title: Android Translations
-        subtitle: Creator
-        timeline: Jun 2020
-        body: |
-          - A tool to find missing and outdated translations in Android projects tracked using Git
-          - Implemented a GitHub action in Golang to serve as a substitute for Android Lint in CI environment
-          - Used `git-blame` to identify outdated string translations
+          - Implemented concurrent sessions and credentials management to
+            serve many simultaneous users
+          - Implemented server extensions for partial file transfer and
+            post-transfer file integrity verification
+          - Implemented visual features such as server toggle quick-settings
+            tile and bright/dark app themes
 
   - title: Miscellaneous
     body: |
-      - **Interests:** API Design, Container management, Distributed systems
-      - **Programming Languages:** (proficient:) Golang, Java, Kotlin, C, (familiar:) Bash, JavaScript, Python, PHP
-      - **Platforms:** (proficient:) Kubernetes, Docker, AWS EC2, (familiar:) Ceph, AWS, GCE/GKE
-      - **Tools:** Linux, Git, GNU make, Gradle, OpenAPI Tools, Intellij, VS Code
-      - **Founder of Udyat**, a students club in the department of Computer Science & Engineering at MIET
+      - **Interests:** Distributed systems, API design, container management,
+        and building things from scratch
+      - **Programming Languages:** (proficient:) Golang, Java, Kotlin,
+        (familiar:) Bash, Dart, JavaScript, Python, C
+      - **Platforms:** (proficient:) Kubernetes, Docker, AWS EC2, Android,
+        (familiar:) Flutter, React, Ceph, AWS EKS
+      - **Founder of [Udyat](https://udyat-miet.github.io)** at the department
+        of Computer Science & Engineering at MIET
+        - Collaborated with faculties and peers to create the software
+          development learning group
+        - Collaborated with peers to host tech seminars, workshops and
+          coding competitions at the department

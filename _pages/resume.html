@@ -22,9 +22,6 @@ in_sitemap: false
       {%- else %}
       {{ resume.title }}
       {%- endif %}
-      {%- if resume.subtitle %}
-      <small>&ndash; {{ resume.subtitle }}</small>
-      {%- endif %}
     </h1>
     <ul id="contacts">
       {%- for contact in resume.contacts %}

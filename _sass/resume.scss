@@ -2,10 +2,18 @@
 @import "base/typography";
 @import "base/colors";
 
+@page {
+  margin: 0.5in 0.67in;
+}
+
 html,
 body {
   font-size: 16px;
   line-height: 1.3;
+
+  @media print {
+    font-size: 10pt;
+  }
 }
 
 body {
@@ -30,6 +38,11 @@ small {
 %default-margin {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+
+  @media print {
+    margin-top: 0.37rem;
+    margin-bottom: 0.37rem;
+  }
 }
 
 $base-heading-size: 1.4rem;
@@ -71,14 +84,31 @@ section {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 
-  & > .section-title {
+  @media print {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
     padding-bottom: 0.25rem;
-    border-bottom: 0.1rem solid var(--color-text-secondary);
+    border-bottom: 1px solid var(--color-text-secondary);
+
+    @media print {
+      position: relative;
+      page-break-after: avoid;
+    }
   }
 
   .subsection {
     margin-top: 1rem;
     margin-bottom: 1rem;
+
+    @media print {
+      margin-top: 0.75rem;
+      margin-bottom: 0.75rem;
+      position: relative;
+      page-break-inside: avoid;
+    }
 
     .subsection-header {
       display: flex;
@@ -105,6 +135,26 @@ section {
         font-size: 0.9rem;
         color: var(--color-text-secondary);
       }
+    }
+  }
+
+  .section-body,
+  .subsection-body {
+    @media print {
+      position: relative;
+      page-break-inside: avoid;
+    }
+
+    a {
+      @media print {
+        color: var(--color-text);
+        font-style: italic;
+      }
+    }
+
+    ul li > ul {
+      margin-top: 0.25rem;
+      margin-bottom: 0.25rem;
     }
   }
 }
