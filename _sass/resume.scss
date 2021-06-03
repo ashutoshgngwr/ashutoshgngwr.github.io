@@ -94,6 +94,7 @@ section {
     border-bottom: 1px solid var(--color-text-secondary);
 
     @media print {
+      border-bottom-width: 1pt;
       position: relative;
       page-break-after: avoid;
     }
