@@ -68,6 +68,9 @@ layout: compress
   <footer>
     <div class="enforce-max-content-width">
       <p class="social-icons">
+        <a aria-label="view RSS feed" title="RSS Feed" href="{{ '/feed.xml' | absolute_url }}">
+          {%- include icon.svg id='rss' %}
+        </a>
         {%- for handle in site.x.social %}
         {%- assign defaultPrefix = handle.name | append: '.com' %}
         <a aria-label="Visit my {{ handle.name }} handle" title="{{ handle.name | capitalize }}"
