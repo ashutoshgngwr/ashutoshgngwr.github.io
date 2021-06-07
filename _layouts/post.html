@@ -16,7 +16,7 @@ layout: page
     <h1 id="{{ page.title | slugify }}" itemprop="name headline">{{ page.title | escape_once }}</h1>
     <div class="meta">
       <small>
-        <time datetime="{{ page.date | date: '%Y-%m-%d' }}" itemprop="datePublished">
+        <time datetime="{{ page.date | date: '%FT%T%z' }}" itemprop="datePublished">
           {{ page.date | date: "%B %e, %Y" }}
         </time>
       </small>

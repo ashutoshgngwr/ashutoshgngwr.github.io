@@ -22,7 +22,7 @@ layout: page
       </a>
       <small>
         &mdash;
-        <time datetime="{{ post.date | date: "%Y-%m-%d" }}" itemprop="datePublished">
+        <time datetime="{{ post.date | date: '%FT%T%z' }}" itemprop="datePublished">
           {{ post.date | date: "%B %e" }}
         </time>
       </small>
