@@ -6,7 +6,7 @@ layout: compress
   <title>{{ site.x.author | xml_escape }}</title>
   <subtitle>{{ site.x.description | xml_escape }}</subtitle>
   <link href="{{ page.url | absolute_url }}" rel="self" />
-  <link href="{{ '/' | absolute_url }}" />
+  <link href="{{ '/' | absolute_url }}" rel="alternate" type="text/html" />
   <id>{{ page.url | absolute_url | xml_escape }}</id>
   <updated>{{ site.time | date_to_xmlschema }}</updated>
   <author>
@@ -16,14 +16,16 @@ layout: compress
 
   {%- for post in site.posts %}
   <entry>
-    <title type="html">{{ post.title | strip_html | normalize_whitespace | xml_escape }}</title>
-    <link href="{{ post.url | absolute_url }}" rel="alternate" type="text/html"/>
+    {%- assign title = post.title | strip_html | normalize_whitespace | xml_escape %}
+    <title type="html">{{ title }}</title>
+    <link href="{{ post.url | absolute_url }}" rel="alternate" type="text/html" title="{{ title }}" />
     <id>{{ post.id | absolute_url | xml_escape }}</id>
+    <published>{{ post.date | date_to_xmlschema }}</published>
     <updated>{{ post.date | date_to_xmlschema }}</updated>
     {%- for tag in post.tags %}
     <category term="{{ tag | xml_escape }}" />
     {%- endfor %}
-    <summary>
+    <summary type="html">
       {{ post.excerpt | strip_html | normalize_whitespace | xml_escape }}
     </summary>
     <content type="html" xml:base="{{ post.url | absolute_url | xml_escape }}">
