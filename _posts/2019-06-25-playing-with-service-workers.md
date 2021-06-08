@@ -3,6 +3,7 @@ layout: post
 title: "Playing with Service Workers"
 date: 2019-06-25 17:15:00 +0530
 tags: web pwa service-worker
+redirect_from: /2019/06/25/playing-with-service-workers
 ---
 
 Yesterday, I stumbled upon [Introduction to Progressive Web Apps][pwa-mdn] on

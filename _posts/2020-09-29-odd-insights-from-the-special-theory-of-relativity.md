@@ -5,6 +5,7 @@ date: 2020-09-29 00:39:59 +0530
 tags: science physics modern-physics
 mathjax: true
 image: interstellar-maneuver.jpg
+redirect_from: /2020/09/28/afterthoughts-on-the-special-theory-of-relativity
 ---
 
 I have been studying the theoretical aspects of the Special Theory of

@@ -4,6 +4,7 @@ title: Autoscalable Kubernetes cluster with preemptible nodes and non-preemptibl
 date: 2020-06-28 19:50:00 +0530
 tags: kubernetes infrastructure ops
 mathjax: true
+redirect_from: /2020/06/28/autoscalable-kubernetes-cluster-with-preemptible-nodes
 ---
 
 Preemptible VMs are a lot cheaper than non-preemptible on-demand VMs on all

@@ -3,6 +3,7 @@ layout: post
 title: "Continuous integration and delivery for Android apps"
 date: 2019-06-21 21:30:00 +0530
 tags: android continuous-integration continuous-delivery
+redirect_from: /2019/06/21/continuos-integration-and-delivery-for-android-apps
 ---
 
 Recently, I created a native Android app called [Noice][noice]. It started out

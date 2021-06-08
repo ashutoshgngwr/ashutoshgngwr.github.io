@@ -54,15 +54,9 @@ This Jekyll template/theme uses the following third-party assets.
   | `in_sitemap`       | `bool`   | Include page in `/sitemap.xml`.                | `true`                        |
   | `sitemap_priority` | `number` | Priority of the page in site map (0-1).        | `collection.sitemap_priority` |
 
-- `redirect` layout creates an HTML page redirect to the URL provided using the
-  `href` key in the front matter.
-
-  ```md
-  ---
-  layout: redirect
-  href: https://github.com
-  ---
-  ```
+- [`jekyll-redirect-from`
+  plugin](https://github.com/jekyll/jekyll-redirect-from) uses the `redirect`
+  layout.
 
 - `compress` layout compresses HTML. **It does not process Javascript comments**
   so, single-line comments will result in syntax errors after compression. Use

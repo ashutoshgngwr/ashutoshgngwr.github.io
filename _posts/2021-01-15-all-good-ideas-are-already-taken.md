@@ -5,6 +5,7 @@ date: 2021-01-15 18:51:32 +0530
 tags: introspection opinion views pov
 image: false
 mathjax: false
+redirect_from: /2021/01/15/all-good-ideas-are-already-taken
 ---
 
 I often find myself in a bind, repeating this statement in disappointment. If I

@@ -4,6 +4,7 @@ title: "Embedding code from GitHub in your website"
 date: 2019-06-23 17:12:00 +0530
 tags: javascript embed-code jekyll github-pages
 image: embedding-code-from-github-0.jpg
+redirect_from: /2019/06/23/embedding-code-from-github-in-a-website
 ---
 
 I've spent the past few days redesigning my website which is built using

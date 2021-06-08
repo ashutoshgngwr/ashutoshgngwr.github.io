@@ -13,6 +13,9 @@ x: # Theme specific stuff
     - name: goodreads
       username: ashutoshgngwr
 
+plugins:
+  - jekyll-redirect-from
+
 collections:
   pages:
     output: true
@@ -20,7 +23,7 @@ collections:
     sitemap_priority: 0.9
   posts:
     output: true
-    permalink: /:year/:month/:day/:title
+    permalink: /:title
     sitemap_priority: 0.8
   icons:
     output: false
