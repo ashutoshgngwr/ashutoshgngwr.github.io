@@ -17,6 +17,7 @@ plugins:
   - jekyll-mentions
   - jekyll-redirect-from
 
+show_drafts: true
 collections:
   pages:
     output: true
@@ -34,6 +35,16 @@ defaults:
       path: ""
     values:
       layout: page
+  - scope:
+      path: "_drafts"
+      # for some reason, 'in_sitemap' isn't working by setting 'type' to
+      # 'drafts'. 'collections.drafts.permalinks' config isn't working either.
+      #
+      # type: drafts
+    values:
+      permalink: /drafts/:title
+      robots: noindex
+      in_sitemap: false
 
 # compress output content
 sass:

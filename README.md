@@ -83,6 +83,7 @@ This Jekyll template/theme uses the following third-party assets.
   | `excerpt` | `string` | Page excerpt (max: 20 words).                                                          | Jekyll's default value |
   | `image`   | `string` | Relative path of an image from `/assets/posts/img/` for Twitter & Open Graph previews. |      Site favicon      |
   | `tags`    | `string` | A comma-separated keyword list. Used with `_posts` collection.                         |         `null`         |
+  | `robots`  | `string` | Content value for meta `robots` tag.                                                   |           -            |
 
 - The [`_pages`](_pages) collection **overrides** the default Jekyll `pages`
   collection (containing all rendered pages).

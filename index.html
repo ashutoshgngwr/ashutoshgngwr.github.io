@@ -9,6 +9,7 @@ layout: page
   <h2>{{ year.name }}</h2>
   <ul>
     {%- for post in year.items %}
+    {%- unless post.draft %}
     <li itemscope itemtype="http://schema.org/BlogPosting">
       <meta itemprop="author" content="{{ site.x.author }}" />
       <meta itemprop="publisher" content="{{ site.x.author }}" />
@@ -27,6 +28,7 @@ layout: page
         </time>
       </small>
     </li>
+    {%- endunless %}
     {%- endfor %}
   </ul>
   {%- endfor %}

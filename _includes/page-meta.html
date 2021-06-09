@@ -79,3 +79,7 @@
 
 <!-- RSS feed -->
 <link href="{{ '/feed.xml' | relative_url }}" title="{{ site.x.author }}" type="application/atom+xml" rel="alternate" />
+
+{%- if page.robots and page.robots != empty %}
+<meta name="robots" content="{{ page.robots }}" />
+{%- endif %}

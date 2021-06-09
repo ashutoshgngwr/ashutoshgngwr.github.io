@@ -15,6 +15,7 @@ layout: compress
   </author>
 
   {%- for post in site.posts %}
+  {%- unless post.draft %}
   <entry>
     {%- assign title = post.title | strip_html | normalize_whitespace | xml_escape %}
     <title type="html">{{ title }}</title>
@@ -32,5 +33,6 @@ layout: compress
       {{ post.content | normalize_whitespace | xml_escape }}
     </content>
   </entry>
+  {%- endunless %}
   {%- endfor %}
 </feed>

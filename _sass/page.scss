@@ -213,11 +213,8 @@ main {
     div.meta {
       display: flex;
       flex-direction: row;
+      justify-content: space-between;
       color: var(--color-text-secondary);
-
-      small:first-of-type {
-        margin-right: auto;
-      }
     }
 
     div.footnotes {
@@ -225,11 +222,11 @@ main {
       padding-top: 1rem;
       border-top: 0.05rem solid var(--color-bg-tertiary);
       color: var(--color-text-secondary);
-      font-size: 0.833em;
+      font-size: 0.87rem;
 
       &:before {
         content: "Notes";
-        font-size: 1rem;
+        font-size: 1.1rem;
         font-weight: 500;
       }
     }
