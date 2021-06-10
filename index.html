@@ -4,32 +4,10 @@ layout: page
 
 <section itemscope itemtype="https://schema.org/Blog">
   <h1>Write-ups</h1>
-  {%- assign postsByYear = site.posts | group_by_exp: "post", "post.date | date: '%Y'" -%}
+  {%- assign posts = site.posts | where_exp: 'post', 'post.draft != true' -%}
+  {%- assign postsByYear = posts | group_by_exp: "post", "post.date | date: '%Y'" -%}
   {%- for year in postsByYear %}
   <h2>{{ year.name }}</h2>
-  <ul>
-    {%- for post in year.items %}
-    {%- unless post.draft %}
-    <li itemscope itemtype="http://schema.org/BlogPosting">
-      <meta itemprop="author" content="{{ site.x.author }}" />
-      <meta itemprop="publisher" content="{{ site.x.author }}" />
-      <meta itemprop="wordCount" content="{{ post.content | strip_html | number_of_words }}" />
-      {%- if post.image and post.image != empty %}
-      <meta itemprop="image" content="{{ post.image | relative_url }}" />
-      {%- endif %}
-
-      <a href="{{ post.url | relative_url }}" itemprop="mainEntityOfPage url">
-        <span itemprop="name headline">{{ post.title | escape_once }}</span>
-      </a>
-      <small>
-        &mdash;
-        <time datetime="{{ post.date | date: '%FT%T%z' }}" itemprop="datePublished">
-          {{ post.date | date: "%B %e" }}
-        </time>
-      </small>
-    </li>
-    {%- endunless %}
-    {%- endfor %}
-  </ul>
+  {% include post_list.html posts = year.items %}
   {%- endfor %}
 </section>

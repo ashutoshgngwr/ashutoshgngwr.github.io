@@ -1,0 +1,24 @@
+<ul>
+  {%- for post in include.posts %}
+  <li itemscope itemtype="http://schema.org/BlogPosting">
+    <meta itemprop="author" content="{{ site.x.author }}" />
+    <meta itemprop="publisher" content="{{ site.x.author }}" />
+    <meta itemprop="wordCount" content="{{ post.content | strip_html | number_of_words }}" />
+    {%- if post.image and post.image != empty %}
+    <meta itemprop="image" content="{{ post.image | relative_url }}" />
+    {%- endif %}
+
+    <a href="{{ post.url | relative_url }}" itemprop="mainEntityOfPage url">
+      <span itemprop="name headline">{{ post.title | escape_once }}</span>
+    </a>
+    {%- unless post.draft %}
+    <small>
+      &mdash;
+      <time datetime="{{ post.date | date: '%FT%T%z' }}" itemprop="datePublished">
+        {{ post.date | date: "%B %e" }}
+      </time>
+    </small>
+    {%- endunless %}
+  </li>
+  {%- endfor %}
+</ul>

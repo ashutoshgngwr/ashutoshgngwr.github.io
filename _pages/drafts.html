@@ -1,5 +1,5 @@
 ---
-in_nav_links: false
+in_nav_links: true
 in_sitemap: false
 layout: page
 mathjax: false
@@ -7,15 +7,10 @@ robots: noindex
 ---
 <section>
   <h1>Drafts</h1>
-  <ul>
-    {%- for post in site.posts %}
-    {%- if post.draft %}
-    <li>
-      <a href="{{ post.url | relative_url }}">
-        {{ post.title | escape_once }}
-      </a>
-    </li>
-    {%- endif %}
-    {%- endfor %}
-  </ul>
+  {%- assign posts = site.posts | where: 'draft',true %}
+  {%- if posts and posts != empty %}
+  {% include post_list.html posts = posts %}
+  {%- else %}
+  <p>I've got nothing cooking up right now.</p>
+  {%- endif %}
 </section>

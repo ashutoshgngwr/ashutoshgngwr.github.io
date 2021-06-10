@@ -16,9 +16,13 @@ layout: page
     <h1 id="{{ page.title | slugify }}" itemprop="name headline">{{ page.title | escape_once }}</h1>
     <div class="meta">
       <small>
+        {%- if page.draft %}
+        Draft
+        {%- else %}
         <time datetime="{{ page.date | date: '%FT%T%z' }}" itemprop="datePublished">
           {{ page.date | date: "%B %e, %Y" }}
         </time>
+        {%- endif %}
       </small>
 
       {%- assign wordCount = page.content | strip_html | number_of_words %}

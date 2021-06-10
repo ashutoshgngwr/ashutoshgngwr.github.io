@@ -42,7 +42,6 @@ defaults:
       #
       # type: drafts
     values:
-      permalink: /drafts/:title
       robots: noindex
       in_sitemap: false
 
