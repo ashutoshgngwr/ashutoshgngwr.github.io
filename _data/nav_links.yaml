@@ -3,6 +3,11 @@
 # - title:
 #   url:
 #   in_sitemap: true # default
+#   nav_priority: 0 # lower, the better. nils at last.
+- title: Home
+  url: /
+  in_sitemap: false
+  nav_priority: 0
 - title: Noice for Android
   url: /noice
   in_sitemap: true

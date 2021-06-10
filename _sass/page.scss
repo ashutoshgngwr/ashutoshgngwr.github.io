@@ -175,7 +175,12 @@ header.page-header {
         transition: color 0.5s cubic-bezier(0.075, 0.82, 0.165, 1),
           background-color 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 
-        &:hover {
+        &:hover,
+        &.active {
+          color: var(--color-primary);
+        }
+
+        &:active {
           color: var(--color-primary-variant);
           background-color: var(--color-bg-tertiary);
         }

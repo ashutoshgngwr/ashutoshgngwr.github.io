@@ -48,10 +48,17 @@ layout: compress
           {%- endfor -%}
           {%- endfor -%}
 
-          {%- assign nav_links = nav_links | sort: 'title' -%}
+          {%- assign pageURL = page.url | relative_url -%}
+          {%- assign nav_links = nav_links | sort: 'title' | sort: 'nav_priority', 'last' -%}
           {%- for link in nav_links %}
           <li itemprop="name">
-            <a href="{{ link.url | relative_url }}" itemprop="url">
+            {%- assign linkURL = link.url | relative_url -%}
+            {%- if pageURL == linkURL -%}
+            {%- assign activeClass = 'class="active"' -%}
+            {%- else -%}
+            {%- assign activeClass = '' -%}
+            {%- endif -%}
+            <a href="{{ linkURL }}" {{ activeClass }} itemprop="url">
               {{ link.title | escape_once }}
             </a>
           </li>
