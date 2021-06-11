@@ -10,7 +10,7 @@ robots: noindex
   <h1>Drafts</h1>
   {%- assign posts = site.posts | where: 'draft',true %}
   {%- if posts and posts != empty %}
-  {% include post_list.html posts = posts %}
+  {% include post-list.html posts = posts %}
   {%- else %}
   <p>I've got nothing cooking up right now.</p>
   {%- endif %}

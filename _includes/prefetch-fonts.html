@@ -1,0 +1,6 @@
+<!-- prefetch fonts -->
+{%- for file in site.static_files %}
+{%- if file.path contains '/assets/static/font' %}
+<link rel="prefetch" href="{{ file.path | relative_url }}" as="font" type="font/woff2" crossorigin>
+{%- endif %}
+{%- endfor %}

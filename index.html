@@ -8,6 +8,6 @@ layout: page
   {%- assign postsByYear = posts | group_by_exp: "post", "post.date | date: '%Y'" -%}
   {%- for year in postsByYear %}
   <h2>{{ year.name }}</h2>
-  {% include post_list.html posts = year.items %}
+  {% include post-list.html posts = year.items %}
   {%- endfor %}
 </section>
