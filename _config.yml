@@ -12,6 +12,7 @@ x: # Theme specific stuff
       username: ashutoshgngwr
     - name: goodreads
       username: ashutoshgngwr
+  goatcounter: https://ashutoshgngwr.goatcounter.com/count
 
 plugins:
   - jekyll-mentions
