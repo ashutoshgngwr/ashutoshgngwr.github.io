@@ -36,24 +36,30 @@ layout: page
     <footer>
       <p>
         {%- assign post_title = page.title | url_encode %}
-        {%- assign post_url = page.url | absolute_url | url_encode %}
+        {%- assign post_url = page.url | absolute_url %}
         &mdash; Share it on
 
-        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ post_url }}" rel="noopener"
+        {%- assign linkedin_url = post_url | append: '?ref=LinkedIn+Share' | url_encode %}
+        {%- assign linkedin_params = 'url=' | append: linkedin_url %}
+        <a href="https://www.linkedin.com/sharing/share-offsite/?{{ linkedin_params }}" rel="noopener"
           title="LinkedIn">LinkedIn</a>,
 
-        {%- assign reddit_params = "url=" | append: post_url %}
-        {%- assign reddit_params = reddit_params | append: "&title=" | append: post_title %}
+        {%- assign reddit_url = post_url | append: '?ref=Reddit+Share' | url_encode %}
+        {%- assign reddit_params = 'url=' | append: reddit_url %}
+        {%- assign reddit_params = reddit_params | append: '&title=' | append: post_title %}
         <a href="https://www.reddit.com/submit?{{ reddit_params }}" rel="noopener" title="Reddit">Reddit</a>
 
         or
 
+        {%- assign twitter_url = post_url | append: '?ref=Twitter+Share' | url_encode %}
         {%- assign twitter_username = site.x.social | where: 'name', 'twitter' | map: 'username' | first %}
-        {%- assign twitter_params = "text=" | append: post_title %}
-        {%- assign twitter_params = twitter_params | append: "&url=" | append: post_url %}
-        {%- assign twitter_params = twitter_params | append: "&via=" | append: twitter_username %}
-        {%- assign twitter_params = twitter_params | append: "&related=" | append: twitter_username %}
-        <a href="https://twitter.com/intent/tweet?{{ twitter_params }}" rel="noopener" title="Twitter">Twitter</a>.
+        {%- assign twitter_params = 'url=' | append: twitter_url %}
+        {%- assign twitter_params = twitter_params | append: '&text=' | append: post_title %}
+        {%- assign twitter_params = twitter_params | append: '&via=' | append: twitter_username %}
+        {%- assign twitter_params = twitter_params | append: '&related=' | append: twitter_username %}
+        <a href="https://twitter.com/intent/tweet?{{ twitter_params }}" rel="noopener" title="Twitter">Twitter</a>,
+
+        or <a href="#" onclick="copyToClipboard(window.location.href.split('#')[0]);">copy its link</a>.
       </p>
     </footer>
   </article>
