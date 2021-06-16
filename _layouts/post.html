@@ -13,7 +13,9 @@ layout: page
     <meta itemprop="keywords" content="{{ page.tags | join: ', ' }}" />
     {%- endif %}
 
-    <h1 id="{{ page.title | slugify }}" itemprop="name headline">{{ page.title | escape_once }}</h1>
+    <h1 class="title" id="{{ page.title | slugify }}" itemprop="name headline">
+      <a href="{{ page.url | relative_url }}">{{ page.title | escape_once }}</a>
+    </h1>
     <div class="meta">
       <small>
         {%- if page.draft %}

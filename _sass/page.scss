@@ -215,6 +215,10 @@ main {
   }
 
   article.post {
+    .title a {
+      color: var(--color-text);
+    }
+
     div.meta {
       display: flex;
       flex-direction: row;

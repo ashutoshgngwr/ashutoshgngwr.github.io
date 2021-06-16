@@ -3,10 +3,11 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
 <title>
-  {% if page.title and page.title != empty %}{{ page.title }} &verbar; {% endif %}{{ site.x.author }}
+  {% if page.title and page.title != empty %}{{ page.title }} &VerticalSeparator; {% endif %}{{ site.x.author }}
 </title>
 
 <!-- additional meta for SEO -->
+<link rel="canonical" href="{{ page.url | absolute_url }}" />
 {%- assign excerpt = page.excerpt | strip_html | truncatewords: 20 | normalize_whitespace -%}
 {%- if excerpt and excerpt != empty %}
 <meta name="description" content="{{ excerpt }}" />
