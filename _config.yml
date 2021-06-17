@@ -5,12 +5,7 @@ x: # Theme specific stuff
     - name: github
       # prefix: github.com ## default is '{name}.com'
       username: ashutoshgngwr
-    - name: linkedin
-      prefix: linkedin.com/in
-      username: ashutoshgngwr
     - name: twitter
-      username: ashutoshgngwr
-    - name: goodreads
       username: ashutoshgngwr
   goatcounter: https://ashutoshgngwr.goatcounter.com/count
 
