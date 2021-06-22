@@ -7,14 +7,14 @@ tags: internet social-media social-networking mental-health disinformation polit
 title: Attempts at solving the online social media
 ---
 
-After graduation, I've always been mindful of my social media consumption. I had
-permanently deleted Facebook and Instagram accounts. I've been keeping search
-and watch histories paused on YouTube. It depersonalises the video
-recommendations. And I barely check Twitter as I find it emotionally expensive.
-So last year, when [Ravi Soni](https://ravisoni.dev) proposed that we try to
-solve the social media, I didn't need convincing to join him. I understood that
-we were setting ourselves up for failure. But I also think that it is one of the
-most urgent problems of the 21st century.
+After graduating in 2019, I've always been mindful of my social media
+consumption. I had permanently deleted Facebook and Instagram accounts. I've
+been keeping search and watch histories paused on YouTube. It depersonalises the
+video recommendations. And I barely check Twitter as I find it emotionally
+expensive. So last year, when [Ravi Soni](https://ravisoni.dev) proposed that we
+try to solve the social media, I didn't need convincing to join him. I
+understood that we were setting ourselves up for failure. But I also think that
+it is one of the most urgent problems of the 21st century.
 
 ## Core problems with present social media
 

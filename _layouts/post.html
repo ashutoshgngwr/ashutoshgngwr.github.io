@@ -1,6 +1,7 @@
 ---
 layout: page
 ---
+
 <div itemscope itemtype="https://schema.org/Blog">
   <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
     <meta itemprop="mainEntityOfPage" content="{{ page.url | relative_url }}" />
@@ -17,24 +18,25 @@ layout: page
       <a href="{{ page.url | relative_url }}">{{ page.title | escape_once }}</a>
     </h1>
     <div class="meta">
+      {%- assign wordCount = page.content | strip_html | number_of_words %}
+      <meta itemprop="wordCount" content="{{ wordCount }}" />
+      {%- assign minTime = wordCount | divided_by: 213 | round -%}
+      {%- assign maxTime = wordCount | divided_by: 155 | round | at_least: 1 %}
       <small>
-        {%- if page.draft %}
-        Draft
-        {%- else %}
+        {% unless minTime == 0 or minTime == maxTime %}{{ minTime }}-{% endunless -%}
+        {{ maxTime }} minute read
+      </small>
+
+      <small>
+        {%- if page.draft %} Draft {%- else %}
         <time datetime="{{ page.date | date: '%FT%T%z' }}" itemprop="datePublished">
           {{ page.date | date: "%B %e, %Y" }}
         </time>
         {%- endif %}
       </small>
-
-      {%- assign wordCount = page.content | strip_html | number_of_words %}
-      <meta itemprop="wordCount" content="{{ wordCount }}" />
-      <small>{{ wordCount }} words</small>
     </div>
     <hr />
-    <div itemprop="articleBody">
-      {{ page.content }}
-    </div>
+    <div itemprop="articleBody">{{ page.content }}</div>
     <footer>
       <p>
         {%- assign post_title = page.title | url_encode %}
