@@ -12,6 +12,57 @@ layout: compress
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
+  <!--
+    To prevent a color flash, theme should be set right here.
+
+    The following defines a function for toggling between the bright/dark theme
+    variants.
+  -->
+  <script>
+    let THEME = "data-theme";
+    let DARK = "dark";
+    let BRIGHT = "bright";
+    let PREFERS_DARK_SCHEME_MQ = "(prefers-color-scheme: dark)";
+    let ACTIVE_THEME_REQ = "active-theme-request";
+    let tCh = new BroadcastChannel(THEME);
+
+    function setTheme(t) {
+      document.documentElement.setAttribute(THEME, t);
+      sessionStorage.setItem(THEME, t);
+
+      let d = t === DARK;
+      let e = document.querySelector("label#theme-toggle > input");
+      e && (e.checked = d);
+    }
+
+    function toggleTheme(c) {
+      let t = c ? DARK : BRIGHT;
+      setTheme(t);
+      tCh.postMessage(t);
+    }
+
+    function getPreferredTheme() {
+      return matchMedia && matchMedia(PREFERS_DARK_SCHEME_MQ).matches
+        ? DARK
+        : BRIGHT;
+    }
+
+    function getTheme() {
+      return sessionStorage.getItem(THEME) || getPreferredTheme();
+    }
+
+    matchMedia(PREFERS_DARK_SCHEME_MQ).addEventListener("change", function () {
+      setTheme(getPreferredTheme());
+    });
+
+    tCh.addEventListener("message", function (e) {
+      e.data === ACTIVE_THEME_REQ ? tCh.postMessage(getTheme()) : setTheme(e.data);
+    });
+
+    setTheme(getTheme());
+    tCh.postMessage(ACTIVE_THEME_REQ);
+  </script>
+
   <header class="page-header floating">
     <div id="navbar" class="enforce-max-content-width">
       <a class="title" href="{{ '/' | relative_url }}" aria-label="go to homepage">
@@ -22,6 +73,8 @@ layout: compress
         {%- include icon.svg id='moon' %}
         {%- include icon.svg id='sun' %}
       </label>
+      <!-- Set theme again on switch load to sync checkbox checked state. -->
+      <script>setTheme(getTheme());</script>
       <label id="menu-toggle" class="switch" title="Expand/collapse menu" aria-label="expand or collapse menu">
         <input type="checkbox" onchange="toggleMenu(this.checked)" />
         {%- include icon.svg id='grid-2x2' %}

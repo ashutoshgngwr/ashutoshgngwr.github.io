@@ -10,63 +10,6 @@ if ("serviceWorker" in navigator) {
     });
 }
 
-/* <!--
-  defines a function for toggling between the bright/dark theme variants. Also
-  sets bright/dark theme on the page load.
---> */
-let KEY_THEME = "data-theme";
-let THEME_DARK = "dark";
-let THEME_BRIGHT = "bright";
-let PREFERS_DARK_SCHEME_MQ = "(prefers-color-scheme: dark)";
-let ACTIVE_THEME_REQUEST = "active-theme-request";
-let themeChannel = new BroadcastChannel(KEY_THEME);
-
-function setTheme(theme) {
-  if (theme !== THEME_BRIGHT && theme !== THEME_DARK) {
-    return;
-  }
-
-  document.documentElement.setAttribute(KEY_THEME, theme);
-  sessionStorage.setItem(KEY_THEME, theme);
-
-  let isDark = theme === THEME_DARK;
-  document.querySelector("label#theme-toggle > input").checked = isDark;
-}
-
-function toggleTheme(isDark) {
-  let theme = isDark ? THEME_DARK : THEME_BRIGHT;
-  setTheme(theme);
-  themeChannel.postMessage(theme);
-}
-
-function getPreferredColorScheme() {
-  return matchMedia && matchMedia(PREFERS_DARK_SCHEME_MQ).matches
-    ? THEME_DARK
-    : THEME_BRIGHT;
-}
-
-function getActiveTheme() {
-  return sessionStorage.getItem(KEY_THEME) || getPreferredColorScheme();
-}
-
-function themeChannelListener(e) {
-  if (e.data === ACTIVE_THEME_REQUEST) {
-    themeChannel.postMessage(getActiveTheme());
-  } else {
-    setTheme(e.data);
-  }
-}
-
-matchMedia(PREFERS_DARK_SCHEME_MQ).addEventListener("change", function () {
-  setTheme(getPreferredColorScheme());
-});
-
-addEventListener("DOMContentLoaded", function () {
-  setTheme(getActiveTheme());
-  themeChannel.addEventListener("message", themeChannelListener);
-  themeChannel.postMessage(ACTIVE_THEME_REQUEST);
-});
-
 /* <!-- smooth scrolling for anchor links on the same page --> */
 addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll("a[href^='#']").forEach(function (item) {
