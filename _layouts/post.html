@@ -3,10 +3,9 @@ layout: page
 ---
 
 <div itemscope itemtype="https://schema.org/Blog">
-  <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-    <meta itemprop="mainEntityOfPage" content="{{ page.url | relative_url }}" />
-    <meta itemprop="author" content="{{ site.x.author }}" />
-    <meta itemprop="publisher" content="{{ site.x.author }}" />
+  <article class="post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <meta itemprop="mainEntityOfPage url" content="{{ page.url | absolute_url }}" />
+    <link itemprop="author" href="#author" />
     {%- if page.image and page.image != empty %}
     <meta itemprop="image" content="{{ page.image | relative_url }}" />
     {%- endif %}
@@ -36,7 +35,7 @@ layout: page
       </small>
     </div>
     <hr />
-    <div itemprop="articleBody">{{ page.content }}</div>
+    <div itemprop="description articleBody">{{ page.content }}</div>
     <footer>
       <p>
         {%- assign post_title = page.title | url_encode %}

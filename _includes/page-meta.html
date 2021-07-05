@@ -3,7 +3,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
 <title>
-  {% if page.title and page.title != empty %}{{ page.title }} &VerticalSeparator; {% endif %}{{ site.x.author }}
+  {% if page.title and page.title != empty %}{{ page.title }}{% else %}{{ site.x.author }}{% endif %}
 </title>
 
 <!-- additional meta for SEO -->

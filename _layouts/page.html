@@ -11,7 +11,7 @@ layout: compress
   <link rel="stylesheet" href="{{ '/assets/static/page.css' | relative_url }}" />
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
+<body itemscope itemtype="https://schema.org/WebPage">
   <!--
     To prevent a color flash, theme should be set right here.
 
@@ -115,20 +115,24 @@ layout: compress
     </div>
   </header>
 
-  <main class="enforce-max-content-width">
+  <main class="enforce-max-content-width" itemprop="mainEntity">
+    <meta itemprop="mainEntityOfPage" content="{{ page.url | absolute_url }}" />
     {{ content }}
   </main>
 
   <footer>
     <div class="enforce-max-content-width">
-      <p class="social-icons">
-        <a aria-label="view RSS feed" title="RSS Feed" href="{{ '/feed.xml' | absolute_url }}">
+      <p class="social-icons" itemprop="author" itemscope itemtype="https://schema.org/Person" itemid="#author">
+        <meta itemprop="name" content="{{ site.x.author }}" />
+        <meta itemprop="url" content="{{ site.url | absolute_url }}" />
+        <a aria-label="view RSS feed" title="RSS Feed" href="{{ '/feed.xml' | absolute_url }}" rel="alternate"
+          type="application/rss+xml">
           {%- include icon.svg id='rss' %}
         </a>
         {%- for handle in site.x.social %}
         {%- assign defaultPrefix = handle.name | append: '.com' %}
         <a aria-label="Visit my {{ handle.name }} handle" title="{{ handle.name | capitalize }}"
-          href="https://{{ handle.prefix | default: defaultPrefix }}/{{ handle.username }}">
+          href="https://{{ handle.prefix | default: defaultPrefix }}/{{ handle.username }}" itemprop="sameAs">
           {%- include icon.svg id=handle.name %}
         </a>
         {%- endfor %}
