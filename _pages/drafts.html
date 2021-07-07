@@ -1,17 +1,18 @@
 ---
-in_nav_links: true
+in_nav: true
 in_sitemap: false
 layout: page
 mathjax: false
 nav_priority: 1
 robots: noindex
+title: Drafts
 ---
-<section>
-  <h1>Drafts</h1>
+<section itemscope itemtype="https://schema.org/Blog">
+  <h1 itemprop="name headline">{{ page.title }}</h1>
   {%- assign posts = site.posts | where: 'draft',true %}
   {%- if posts and posts != empty %}
   {% include post-list.html posts = posts %}
   {%- else %}
-  <p>I've got nothing cooking up right now.</p>
+  <p>Sorry, I've got nothing cooking up right now!</p>
   {%- endif %}
 </section>

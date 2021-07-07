@@ -268,12 +268,26 @@ body > footer {
     }
   }
 
+  a {
+    &,
+    &:visited {
+      color: inherit;
+    }
+
+    &:hover {
+      color: var(--color-primary);
+    }
+
+    &:active {
+      color: var(--color-primary-variant);
+    }
+  }
+
   p.social-icons {
     display: flex;
 
     a {
       margin-right: 0.5em;
-      color: inherit;
       font-size: 1.25rem; // for icon class
 
       // since devices with lower resolution will typically use an imprecise
@@ -284,14 +298,6 @@ body > footer {
 
       &:last-child {
         margin-right: 0;
-      }
-
-      &:hover {
-        color: var(--color-primary);
-      }
-
-      &:active {
-        color: var(--color-primary-variant);
       }
     }
   }

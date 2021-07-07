@@ -4,7 +4,7 @@
 #   url:
 #   in_sitemap: true # default
 #   nav_priority: 0 # lower, the better. nils at last.
-- title: Home
+- title: Write-ups
   url: /
   in_sitemap: false
   nav_priority: 0

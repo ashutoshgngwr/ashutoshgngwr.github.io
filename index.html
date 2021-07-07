@@ -3,7 +3,7 @@ layout: page
 ---
 
 <section itemscope itemtype="https://schema.org/Blog">
-  <h1>Write-ups</h1>
+  <h1 itemprop="name headline">Write-ups</h1>
   {%- assign posts = site.posts | where_exp: 'post', 'post.draft != true' -%}
   {%- assign postsByYear = posts | group_by_exp: "post", "post.date | date: '%Y'" -%}
   {%- for year in postsByYear %}

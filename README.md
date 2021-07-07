@@ -47,12 +47,12 @@ This Jekyll template/theme uses the following third-party assets.
   front matter data in addition to that accepted by the
   [`page-meta`](#miscellaneous) partial.
 
-  | Key                | Type     | Description                                    | Default                       |
-  | ------------------ | -------- | ---------------------------------------------- | ----------------------------- |
-  | `in_nav_links`     | `bool`   | Include this page in the site navigation menu. | `false`                       |
-  | `mathjax`          | `bool`   | Add MathJax JavaScript library to the page.    | `false`                       |
-  | `in_sitemap`       | `bool`   | Include page in `/sitemap.xml`.                | `true`                        |
-  | `sitemap_priority` | `number` | Priority of the page in site map (0-1).        | `collection.sitemap_priority` |
+  | Key                | Type     | Description                                  | Default                       |
+  | ------------------ | -------- | -------------------------------------------- | ----------------------------- |
+  | `in_nav`           | `bool`   | Include this page in site's navigation menu. | `false`                       |
+  | `mathjax`          | `bool`   | Add MathJax JavaScript library to the page.  | `false`                       |
+  | `in_sitemap`       | `bool`   | Include page in `/sitemap.xml`.              | `true`                        |
+  | `sitemap_priority` | `number` | Priority of the page in site map (0-1).      | `collection.sitemap_priority` |
 
 - [`jekyll-redirect-from`
   plugin](https://github.com/jekyll/jekyll-redirect-from) uses the `redirect`
@@ -68,8 +68,8 @@ This Jekyll template/theme uses the following third-party assets.
 
 - **External navigation links** are present in
   [`_data/nav_links.yaml`](_data/nav_links.yaml).
-- **Internal pages** from any collection should use `in_nav_links: true` front
-  matter flag (default: `false`).
+- **Internal pages** from any collection should use `in_nav: true` front matter
+  flag (default: `false`).
 
 ### Miscellaneous
 

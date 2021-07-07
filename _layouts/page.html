@@ -89,7 +89,7 @@ layout: compress
 
           {%- for collection in site.collections -%}
           {%- for page in site[collection.label] -%}
-          {%- if page.in_nav_links -%}
+          {%- if page.in_nav -%}
           {%- assign nav_links = nav_links | push: page -%}
           {%- endif -%}
           {%- endfor -%}
@@ -116,8 +116,8 @@ layout: compress
   </header>
 
   <main class="enforce-max-content-width" itemprop="mainEntity">
-    <meta itemprop="mainEntityOfPage" content="{{ page.url | absolute_url }}" />
     {{ content }}
+    <meta itemprop="mainEntityOfPage" content="{{ page.url | absolute_url }}" />
   </main>
 
   <footer>
