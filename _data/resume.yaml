@@ -10,14 +10,6 @@ contacts:
     url: https://linkedin.com/in/ashutoshgngwr
 
 sections:
-  - title: Education
-    subsections:
-      - title: Meerut Institute of Engineering & Technology
-        subtitle: Dr. A.P.J. Abdul Kalam Technical University
-        url: https://miet.ac.in
-        timeline: Aug 2015 - Jul 2019
-        body: Bachelor of Technology in Computer Science and Engineering
-
   - title: Work Experience
     subsections:
       - title: Zauba Technologies, Bangalore IN
@@ -59,32 +51,44 @@ sections:
             (TypeScript)
           - Wrote unit and UI tests and built CI/CD pipelines for both Android
             and Chromecast Receiver apps
-          - Serving 6.2k active users on Play Store with 4.3/5 average user
-            rating and 319 GitHub stars (as of May 2021)
+          - Serving 6.4k active users on Play Store with 4.6/5 average user
+            rating and 470 GitHub stars (as of October 2021)
+
+      - title: Udyat
+        subtitle: Founder
+        url: https://udyat-miet.github.io
+        timeline: Jul 2018 - Jun 2019
+        body: |
+          - Collaborated with faculties and peers to create a software
+            development learning group
+          - Collaborated with peers to host tech seminars, workshops and
+            coding competitions at the department
 
       - title: swiftp, a FTP-over-LAN server for Android
         subtitle: Contributor
-        url: https://github.com/ppareit/swiftp
+        url: https://github.com/ppareit/swiftp/pulls?q=is%3Apr+author%3Aashutoshgngwr+is%3Aclosed
         timeline: May 2017 – Jun 2018
         body: |
-          - Implemented concurrent sessions and credentials management to
-            serve many simultaneous users
-          - Implemented server extensions for partial file transfer and
+          - Implemented a module for managing FTP users to facilitate concurrent
+            sessions from many users at once
+          - Implemented FTP server extensions for partial file transfer and
             post-transfer file integrity verification
-          - Implemented visual features such as server toggle quick-settings
-            tile and bright/dark app themes
+          - Implemented visual features: a quick-settings tile, app theme
+            variants and a landing page on the web
 
-  - title: Miscellaneous
+  - title: Education
+    subsections:
+      - title: Meerut Institute of Engineering & Technology
+        subtitle: Dr. A.P.J. Abdul Kalam Technical University
+        url: https://miet.ac.in
+        timeline: Aug 2015 - Jul 2019
+        body: Bachelor of Technology in Computer Science and Engineering
+
+  - title: Skills and Interests
     body: |
-      - **Interests:** Distributed systems, API design, container management,
-        and building things from scratch
-      - **Programming Languages:** (proficient:) Golang, Java, Kotlin,
-        (familiar:) Bash, Dart, JavaScript, Python, C
-      - **Platforms:** (proficient:) Kubernetes, Docker, AWS EC2, Android,
-        (familiar:) Flutter, React, Ceph, AWS EKS
-      - **Founder of [Udyat](https://udyat-miet.github.io)** at the department
-        of Computer Science & Engineering at MIET
-        - Collaborated with faculties and peers to create the software
-          development learning group
-        - Collaborated with peers to host tech seminars, workshops and
-          coding competitions at the department
+      - **Skills**: containerised workloads, infrastructure management, API
+        design
+      - **Programming Languages**: **proficient**: Golang, Java, Kotlin,
+        **familiar**: C, Python, Bash, JavaScript, Dart
+      - **Platforms**: **proficient**: Kubernetes, Docker, AWS, Android,
+        PostgreSQL **familiar**: Spring, GCP, React, Flutter
