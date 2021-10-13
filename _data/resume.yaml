@@ -25,14 +25,14 @@ sections:
         url: https://web.archive.org/web/20200725050709/https://zauba.company/
         timeline: Aug 2019 - Feb 2020
         body: |
-          - Implemented a metrics aggregation and caching layer for the workload
-            scheduler of the PaaS platform
-          - Set up cluster monitoring and observability and implemented a
-            watchdog for monitoring application health
+          - Implemented the metrics aggregation and caching layer for scheduling
+            container workloads
+          - Set up cluster monitoring and observability for internal components
+            and user workloads
+          - Set up automation to deploy and scale Ceph storage clusters on AWS
+            using Ceph Ansible
           - Took initiatives to set up and manage development infrastructure on
-            AWS: tiny Kubernetes and Ceph clusters
-          - Set up a reproducible cluster deployment and expansion
-            automation for Ceph using Ansible
+            AWS using Kops and Ceph Ansible
 
       - title: FOSSEE, IIT Bombay, Mumbai IN
         subtitle: Summer Fellow
