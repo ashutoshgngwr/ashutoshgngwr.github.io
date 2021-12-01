@@ -65,9 +65,7 @@ layout: compress
 
   <header class="page-header floating">
     <div id="navbar" class="enforce-max-content-width">
-      <a class="title" href="{{ '/' | relative_url }}" aria-label="go to homepage">
-        {{ site.x.author }}
-      </a>
+      <a class="title" href="{{ '/' | relative_url }}" aria-label="go to homepage"></a>
       <label id="theme-toggle" class="switch" title="Toggle bright/dark mode" aria-label="toggle bright or dark mode">
         <input type="checkbox" onchange="toggleTheme(this.checked)" />
         {%- include icon.svg id='moon' %}

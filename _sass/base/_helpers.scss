@@ -29,3 +29,21 @@ $breakpoints: (
     @content;
   }
 }
+
+@mixin tab-size($val) {
+  -moz-tab-size: $val;
+  -o-tab-size: $val;
+  tab-size: $val;
+}
+
+@mixin hyphens($val) {
+  -webkit-hyphens: $val;
+  -moz-hyphens: $val;
+  -ms-hyphens: $val;
+  hyphens: $val;
+}
+
+@mixin mask($val) {
+  -webkit-mask: $val;
+  mask: $val;
+}

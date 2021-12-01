@@ -1,4 +1,4 @@
-@import "mq-helper";
+@import "helpers";
 
 %font-family-sans-serif {
   font-family: "Source Sans Pro", Helvetica, sans-serif;
@@ -13,19 +13,6 @@
 %font-family-mono {
   font-family: "Source Code Pro", "Consolas", Courier, monospace;
   font-weight: 450;
-}
-
-@mixin tab-size($val) {
-  -moz-tab-size: $val;
-  -o-tab-size: $val;
-  tab-size: $val;
-}
-
-@mixin hyphens($val) {
-  -webkit-hyphens: $val;
-  -moz-hyphens: $val;
-  -ms-hyphens: $val;
-  hyphens: $val;
 }
 
 html,
