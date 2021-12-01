@@ -23,10 +23,7 @@ This Jekyll template/theme uses the following third-party assets.
 - icons from [open-iconic](https://github.com/iconic/open-iconic)
 - icons from [simple-icons](https://github.com/simple-icons/simple-icons)
 - [jekyll-compress-html](https://github.com/penibelst/jekyll-compress-html)
-- [Merriweather font](https://github.com/SorkinType/Merriweather)
 - [normalize.css](https://github.com/necolas/normalize.css)
-- [Source Code Pro font](https://github.com/adobe-fonts/source-code-pro)
-- [Source Sans Pro font](https://github.com/adobe-fonts/source-sans-pro)
 
 ## Notes
 

@@ -274,7 +274,7 @@ body > footer {
   a {
     &,
     &:visited {
-      color: inherit;
+      color: var(--color-text);
     }
 
     &:hover {
@@ -292,6 +292,7 @@ body > footer {
     a {
       margin-right: 0.5em;
       font-size: 1.25rem; // for icon class
+      color: var(--color-text-secondary);
 
       // since devices with lower resolution will typically use an imprecise
       // pointing device such as fingers on touchscreens
