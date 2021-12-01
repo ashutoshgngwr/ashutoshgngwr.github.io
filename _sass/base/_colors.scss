@@ -1,5 +1,6 @@
 $accent-transparency: 0.7;
 $secondary-bg-distance: 5%;
+$tertiary-bg-distance: 10%;
 $secondary-text-distance: 25%;
 
 /* dark default */
@@ -11,7 +12,7 @@ $secondary-text-distance: 25%;
 
   --color-bg: #{$color-bg};
   --color-bg-secondary: #{lighten($color-bg, $secondary-bg-distance)};
-  --color-bg-tertiary: #{lighten($color-bg, 2 * $secondary-bg-distance)};
+  --color-bg-tertiary: #{lighten($color-bg, $tertiary-bg-distance)};
   --color-primary: #{$color-primary};
   --color-primary-variant: #{$color-primary-dark};
   --color-primary-accent: #{transparentize($color-primary, $accent-transparency)};
@@ -35,7 +36,7 @@ $secondary-text-distance: 25%;
 
   --color-bg: #{$color-bg};
   --color-bg-secondary: #{darken($color-bg, $secondary-bg-distance)};
-  --color-bg-tertiary: #{darken($color-bg, 2 * $secondary-bg-distance)};
+  --color-bg-tertiary: #{darken($color-bg, $tertiary-bg-distance)};
   --color-primary: #{$color-primary};
   --color-primary-variant: #{$color-primary-light};
   --color-primary-accent: #{transparentize($color-primary, $accent-transparency)};
@@ -180,12 +181,17 @@ blockquote {
 table {
   border-color: var(--color-primary-accent);
 
-  thead {
-    background: var(--color-primary-accent);
+  thead > tr {
+    background: var(--color-bg-secondary);
+    color: var(--color-primary);
   }
 
   tr:nth-child(even) {
     background: var(--color-bg-secondary);
+
+    code {
+      background-color: var(--color-bg-tertiary);
+    }
   }
 
   td,

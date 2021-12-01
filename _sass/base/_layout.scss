@@ -105,16 +105,19 @@ pre > code {
 }
 
 table {
+  max-width: 100%;
   margin: 0.8em auto;
   border-collapse: collapse;
   border-spacing: 0;
   border-bottom-width: 0.075rem;
   border-bottom-style: solid;
+  border-top-width: 0.075rem;
+  border-top-style: solid;
 
   td,
   th {
     text-align: left;
-    padding: 0.25em 0.75em;
+    padding: 0.15em 0.75em;
     border-left-width: 0.075rem;
     border-left-style: solid;
 
@@ -122,6 +125,11 @@ table {
       border-right-width: 0.075rem;
       border-right-style: solid;
     }
+  }
+
+  th {
+    border-bottom-width: 0.075rem;
+    border-bottom-style: solid;
   }
 }
 
