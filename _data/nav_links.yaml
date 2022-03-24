@@ -9,5 +9,5 @@
   in_sitemap: false
   nav_priority: 0
 - title: Noice for Android
-  url: /noice
-  in_sitemap: true
+  url: https://trynoice.com
+  in_sitemap: false
