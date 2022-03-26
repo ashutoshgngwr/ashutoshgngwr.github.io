@@ -5,15 +5,12 @@ layout: compress
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>{{ '/' | absolute_url }}</loc>
-    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <priority>1.00</priority>
   </url>
   {%- for link in site.data.nav_links -%}
   {%- unless link.in_sitemap == false -%}
   <url>
     <loc>{{ link.url | absolute_url | xml_escape }}</loc>
-    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
-    <changefreq>weekly</changefreq>
     <priority>{{ link.sitemap_priority | default: 0.9 }}</priority>
   </url>
   {%- endunless %}
@@ -25,8 +22,9 @@ layout: compress
   {%- unless page.in_sitemap == false -%}
   <url>
     <loc>{{ page.url | absolute_url | xml_escape }}</loc>
-    <lastmod>{{ page.date | default: site.time | date_to_xmlschema }}</lastmod>
-    <changefreq>weekly</changefreq>
+    {%- if page.date %}
+    <lastmod>{{ page.date | date_to_xmlschema }}</lastmod>
+    {%- endif %}
     <priority>{{ page.sitemap_priority | default: collection.sitemap_priority | default: 0.5 }}</priority>
   </url>
   {%- endunless %}
