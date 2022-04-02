@@ -66,8 +66,8 @@ promised - a tool to share personal updates with the people we know.
 ## Finding solutions
 
 After some lengthy discussions, our efforts
-yielded [HymnFeed](https://hymnfeed.social/). While working on it, we also
-participated in [Y Combinator's 4-week build
+yielded [HymnFeed](https://web.archive.org/web/20210605134631/https://hymnfeed.social/).
+While working on it, we also participated in [Y Combinator's 4-week build
 sprint](https://blog.ycombinator.com/announcing-yc-build-sprint-and-20-equity-free-grants/).
 Although we couldn't build a functional demo in time, it had the following
 fundamental features on paper.
@@ -109,9 +109,10 @@ for us, that meant creating another Facebook, so it was pointless.
 By the end of September 2020, we decided to pull the plug on HymnFeed. Ravi
 moved on to work at [SuperTokens](https://supertokens.io/) while I shifted my
 focus to a different project. Some time towards the end of November 2020, I
-rebooted the project from scratch as [Soir](https://getsoir.com/). I carried
-forward the ideas we had discussed so far. But before considering these ideas, I
-started with the very basics.
+rebooted the project from scratch
+as [Soir](https://web.archive.org/web/20210605142931/https://getsoir.com/). I
+carried forward the ideas we had discussed so far. But before considering these
+ideas, I started with the very basics.
 
 ### Establishing boundaries
 
