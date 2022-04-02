@@ -1,23 +1,13 @@
-$accent-transparency: 0.7;
-$secondary-bg-distance: 5%;
-$tertiary-bg-distance: 10%;
-$secondary-text-distance: 25%;
-
 /* dark default */
 :root {
-  $color-bg: #283149;
-  $color-primary: #9ec1f7;
-  $color-primary-dark: #659df2;
-  $color-text: #fcfcfc;
-
-  --color-bg: #{$color-bg};
-  --color-bg-secondary: #{lighten($color-bg, $secondary-bg-distance)};
-  --color-bg-tertiary: #{lighten($color-bg, $tertiary-bg-distance)};
-  --color-primary: #{$color-primary};
-  --color-primary-variant: #{$color-primary-dark};
-  --color-primary-accent: #{transparentize($color-primary, $accent-transparency)};
-  --color-text: #{$color-text};
-  --color-text-secondary: #{darken($color-text, $secondary-text-distance)};
+  --color-bg: #283149;
+  --color-bg-secondary: #364262;
+  --color-bg-tertiary: #44537c;
+  --color-primary: #9ec1f7;
+  --color-primary-variant: #659df2;
+  --color-primary-accent: #{transparentize(#9ec1f7, 0.7)};
+  --color-text: #fcfcfc;
+  --color-text-secondary: #bdbdbd;
 
   --color-code-red: #ff5370;
   --color-code-blue: #82aaff;
@@ -29,19 +19,14 @@ $secondary-text-distance: 25%;
 }
 
 :root[data-theme="bright"] {
-  $color-bg: #fbfbfb;
-  $color-primary: #0d50bb;
-  $color-primary-light: #347cf0;
-  $color-text: #131313;
-
-  --color-bg: #{$color-bg};
-  --color-bg-secondary: #{darken($color-bg, $secondary-bg-distance)};
-  --color-bg-tertiary: #{darken($color-bg, $tertiary-bg-distance)};
-  --color-primary: #{$color-primary};
-  --color-primary-variant: #{$color-primary-light};
-  --color-primary-accent: #{transparentize($color-primary, $accent-transparency)};
-  --color-text: #{$color-text};
-  --color-text-secondary: #{lighten($color-text, $secondary-text-distance)};
+  --color-bg: #fbfbfb;
+  --color-bg-secondary: #f4f4f4;
+  --color-bg-tertiary: #e8e8e8;
+  --color-primary: #0d50bb;
+  --color-primary-variant: #347cf0;
+  --color-primary-accent: #{transparentize(#0d50bb, 0.7)};
+  --color-text: #131313;
+  --color-text-secondary: #595959;
 
   --color-code-red: #ca1243;
   --color-code-blue: #4078f2;

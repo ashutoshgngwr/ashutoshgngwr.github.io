@@ -59,7 +59,7 @@ label.switch {
 }
 
 pre div.view-file {
-  @extend %font-family-sans-serif;
+  font-family: var(--font-family-sans-serif);
   text-align: right;
 }
 
@@ -111,6 +111,13 @@ header.page-header {
       @include mask(
         url($static-res-dir + "/img/title.png") center/contain no-repeat
       );
+
+      @media print {
+        @include mask(none);
+        &::before {
+          content: "Ashutosh Gangwar";
+        }
+      }
 
       &:hover {
         background-color: var(--color-primary);
@@ -201,7 +208,7 @@ main {
 
   %heading-anchor-style {
     margin-left: 0.5rem;
-    font-size: 0.9em;
+    font-size: var(--font-size-small);
     vertical-align: middle;
 
     @media print {
@@ -233,13 +240,8 @@ main {
       margin: 2rem auto;
       padding-top: 1rem;
       border-top: 0.05rem solid var(--color-bg-tertiary);
-      font-size: 0.87rem;
-
-      &:before {
-        content: "Notes";
-        font-size: 1.1rem;
-        font-weight: 500;
-      }
+      font-size: var(--font-size-small);
+      color: var(--color-text-secondary);
     }
   }
 }
@@ -302,6 +304,10 @@ body > footer {
 
       &:last-child {
         margin-right: 0;
+      }
+
+      &:hover {
+        color: var(--color-primary);
       }
     }
   }
