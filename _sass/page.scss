@@ -243,6 +243,14 @@ main {
       font-size: var(--font-size-small);
       color: var(--color-text-secondary);
     }
+
+    img + em {
+      box-sizing: border-box;
+      display: inline-block;
+      width: 100%;
+      padding: 0.5rem 1rem;
+      text-align: center;
+    }
   }
 }
 
