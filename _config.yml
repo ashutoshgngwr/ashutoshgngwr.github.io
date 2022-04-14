@@ -23,30 +23,22 @@ collections:
     output: true
     permalink: /:title
     sitemap_priority: 0.8
+  drafts:
+    output: true
+    permalink: /:title
+    sitemap_priority: 0.7
   icons:
     output: false
   noice: # Config for redirecting links to the new Noice portal
     output: true
     permalink: /:collection/:path
+    sitemap_priority: 1.0
 
 defaults:
   - scope:
       path: ""
     values:
       layout: page
-  - scope:
-      path: "_drafts"
-      # for some reason, 'in_sitemap' isn't working by setting 'type' to
-      # 'drafts'. 'collections.drafts.permalinks' config isn't working either.
-      #
-      # type: drafts
-    values:
-      robots: noindex
-      in_sitemap: false
-  - scope: # Config for redirecting links to the new Noice portal
-      path: "_noice"
-    values:
-      in_sitemap: false
 
 # compress output content
 sass:
