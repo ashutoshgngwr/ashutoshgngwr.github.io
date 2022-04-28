@@ -3,7 +3,7 @@ in_sitemap: false
 layout: page
 mathjax: false
 title: Privacy Policy - Tic Tac Toe II
-robots: noindex,nofollow
+robots: noindex
 ---
 
 # {{ page.title }}
