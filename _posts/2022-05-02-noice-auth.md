@@ -1,7 +1,9 @@
 ---
+date: 2022-05-02 19:52:45 +0530
 image: noice-auth-0.png
 layout: post
 mathjax: false
+tags: noice backend authentication rest-api web
 title: Designing a passwordless authentication system for Noice
 ---
 
@@ -59,7 +61,7 @@ sign-in links with one-time passwords.
 
 ## Issuing New Credentials
 
-Clients regularly exchange credentials for keeping a user signed in. The server
+Clients regularly exchange their credentials to keep users signed in. The server
 implements an API endpoint to perform a credential exchange. Every time a
 credential exchange happens, the server renews the refresh and access token pair
 and extends their expiration.
@@ -99,3 +101,61 @@ The server revokes the refresh token using this identifier from its data store.
 It also uses an in-memory cache to store *dangling* access tokens until their
 expiration. Upon successful sign-out, the server refuses any subsequent requests
 using the same refresh or access token.
+
+## Demo
+
+I have the Noice API's staging environment set up. Please feel free to try out
+its authentication. FYI, the API server will refuse requests with `HTTP 502`
+when it is down.
+
+To perform the sign-up operation, make the following `POST` request.
+
+```sh
+curl -v -L -X POST 'https://api.trynoice.com/v1/accounts/signUp' \
+  -H 'Content-Type: application/json' \
+  --data-raw '{
+    "name": "<Your name>",
+    "email": "<Your email>"
+  }'
+```
+
+The API will send a sign-in link to the registered email. Copy the sign-in token
+from the token query parameter in the link. Then use the following `GET` request
+to obtain a refresh and access token pair.
+
+```sh
+curl -v -L -X GET 'https://api.trynoice.com/v1/accounts/credentials' \
+  -H 'X-Refresh-Token: <Your sign-in token>'
+```
+
+On obtaining a new access token, you can view your profile by making the
+following `GET` request.
+
+```sh
+curl -v -L -X GET 'https://api.trynoice.com/v1/accounts/profile' \
+  -H 'Authorization: Bearer <Your access token>'
+```
+
+To test credentials exchange, replace the sign-in token in the second request
+with the refresh token obtained in the third request. You can then fetch your
+profile again with the new access token.
+
+Make the following `GET` request with the latest refresh and access token pair
+to sign out.
+
+```sh
+curl -v -L -X GET 'https://api.trynoice.com/v1/accounts/signOut' \
+  -H 'X-Refresh-Token: <Your refresh token>' \
+  -H 'Authorization: Bearer <Your access token>'
+```
+
+Make the following `POST` request to sign-in again. Then perform a credentials
+exchange.
+
+```sh
+curl -v -L -X POST 'https://api.trynoice.com/v1/accounts/signIn' \
+  -H 'Content-Type: application/json' \
+  --data-raw '{
+    "email": "<Registered email>"
+  }'
+```
