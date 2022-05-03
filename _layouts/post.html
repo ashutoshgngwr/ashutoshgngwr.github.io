@@ -17,6 +17,14 @@ layout: page
       <a href="{{ page.url | relative_url }}">{{ page.title | escape_once }}</a>
     </h1>
     <div class="meta">
+      <small>
+        {%- if page.draft %} Draft {%- else %}
+        <time datetime="{{ page.date | date: '%FT%T%z' }}" itemprop="datePublished">
+          {{ page.date | date: "%B %e, %Y" }}
+        </time>
+        {%- endif %}
+      </small>
+
       {%- assign wordCount = page.content | strip_html | number_of_words %}
       <meta itemprop="wordCount" content="{{ wordCount }}" />
       {%- assign minTime = wordCount | divided_by: 213 | round -%}
@@ -24,14 +32,6 @@ layout: page
       <small>
         {% unless minTime == 0 or minTime == maxTime %}{{ minTime }}-{% endunless -%}
         {{ maxTime }} minute read
-      </small>
-
-      <small>
-        {%- if page.draft %} Draft {%- else %}
-        <time datetime="{{ page.date | date: '%FT%T%z' }}" itemprop="datePublished">
-          {{ page.date | date: "%B %e, %Y" }}
-        </time>
-        {%- endif %}
       </small>
     </div>
     <hr />
