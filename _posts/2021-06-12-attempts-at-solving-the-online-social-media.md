@@ -167,9 +167,6 @@ that, my situation is most definitely gloomy. My initial goal was somewhat
 optimistic. I wanted to ship a functional demo to a small audience mindful of
 their social media consumption. I'll let you know if I survive its first phase.
 
-Thought of something constructive to share? Please feel free to write to me at
-ashutoshgngwr[at]gmail.com.
-
 [^1]: Pressing a like button is faster than typing a critical comment. So the
       data may not reconcile with reality, and thus inflating our inferences.
       But, we wouldn't care about the quality of the data, as long as it gives
