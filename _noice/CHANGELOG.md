@@ -1,5 +1,5 @@
 ---
 layout: redirect
 redirect:
-  to: https://trynoice.com/changelog
+  to: https://trynoice.com/changelog/archived
 ---
