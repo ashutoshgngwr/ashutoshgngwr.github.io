@@ -1,5 +1,5 @@
 ---
 layout: redirect
 redirect:
-  to: https://github.com/ashutoshgngwr/noice/blob/main/CONTRIBUTING.md
+  to: https://github.com/trynoice/android-app/blob/main/CONTRIBUTING.md
 ---

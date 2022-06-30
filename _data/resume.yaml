@@ -42,7 +42,7 @@ sections:
     subsections:
       - title: Noice for Android
         subtitle: Creator
-        url: https://github.com/ashutoshgngwr/noice
+        url: https://github.com/trynoice
         timeline: Jun 2019 - Present
         body: |
           - Built an Android application in Kotlin to create ambient sound

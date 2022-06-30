@@ -78,8 +78,8 @@ open source projects. Following is a gist of configuration for the CI job used
 to run automated tests, that runs on every commit to mainline.
 
 <pre data-start="29" data-end="33" data-lang="yaml"
-  data-src="https://raw.githubusercontent.com/ashutoshgngwr/noice/0.2.1/.travis.yml"
-  data-view="https://github.com/ashutoshgngwr/noice/blob/0.2.1/.travis.yml#L29-L33"
+  data-src="https://raw.githubusercontent.com/trynoice/android-app/0.2.1/.travis.yml"
+  data-view="https://github.com/trynoice/android-app/blob/0.2.1/.travis.yml#L29-L33"
 ></pre>
 
 - **Line 1:** Specifies which stage is this in the whole CI pipeline.
@@ -128,8 +128,8 @@ to change very often.
 I'm leaving out the install and setup instructions. Here's the `Fastfile`
 
 <pre data-start="16" data-lang="plaintext"
-  data-src="https://raw.githubusercontent.com/ashutoshgngwr/noice/0.2.1/fastlane/Fastfile"
-  data-view="https://github.com/ashutoshgngwr/noice/blob/0.2.1/fastlane/Fastfile#L16-L41"
+  data-src="https://raw.githubusercontent.com/trynoice/android-app/0.2.1/fastlane/Fastfile"
+  data-view="https://github.com/trynoice/android-app/blob/0.2.1/fastlane/Fastfile#L16-L41"
 ></pre>
 
 First lane, `beta`, uses a [Gradle][gradle] task to build the **signed** Android
@@ -149,8 +149,8 @@ My Travis configuration for `deployment` job was fairly simple given
 the Play Store.
 
 <pre data-start="34" data-end="50" data-lang="yaml"
-  data-src="https://raw.githubusercontent.com/ashutoshgngwr/noice/0.2.1/.travis.yml"
-  data-view="https://github.com/ashutoshgngwr/noice/blob/0.2.1/.travis.yml#L34-L50"
+  data-src="https://raw.githubusercontent.com/trynoice/android-app/0.2.1/.travis.yml"
+  data-view="https://github.com/trynoice/android-app/blob/0.2.1/.travis.yml#L34-L50"
 ></pre>
 
 - **Line 2-5:** Encrypted environment variables that contain passwords for
@@ -203,12 +203,12 @@ you can also rate it on the [Play Store][noice-play-store].
 [code-coverage]: https://en.wikipedia.org/wiki/Code_coverage
 [gradle]: https://gradle.org/
 [codecov]: https://codecov.io
-[noice-tests]: https://github.com/ashutoshgngwr/noice/tree/0.2.1/app/src/test/java/com/github/ashutoshgngwr/noice
-[travis-test-job-log]: https://travis-ci.org/ashutoshgngwr/noice/builds/546710205#L1384
+[noice-tests]: https://github.com/trynoice/android-app/tree/0.2.1/app/src/test/java/com/github/trynoice/android-app
+[travis-test-job-log]: https://travis-ci.org/trynoice/android-app/builds/546710205#L1384
 [fastlane]: https://fastlane.tools
 [fastlane-android-docs]: https://docs.fastlane.tools/getting-started/android/setup/
 [fastlane-utp-docs]: https://docs.fastlane.tools/actions/upload_to_play_store/
 [google-sa-keys]: https://cloud.google.com/iam/docs/creating-managing-service-account-keys
-[full-travis-conf]: https://github.com/ashutoshgngwr/noice/blob/0.2.1/.travis.yml
-[noice-gh]: https://github.com/ashutoshgngwr/noice
+[full-travis-conf]: https://github.com/trynoice/android-app/blob/0.2.1/.travis.yml
+[noice-gh]: https://github.com/trynoice/android-app
 [noice-play-store]: https://play.google.com/store/apps/details?id=com.github.ashutoshgngwr.noice

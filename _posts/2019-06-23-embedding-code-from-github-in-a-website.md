@@ -50,8 +50,8 @@ except text formatting. I came up with the following
 
 ```html
 <pre data-start="29" data-end="33" data-lang="yaml"
-  data-src="https://raw.githubusercontent.com/ashutoshgngwr/noice/0.2.1/.travis.yml"
-  data-view="https://github.com/ashutoshgngwr/noice/blob/0.2.1/.travis.yml#L29-L33"
+  data-src="https://raw.githubusercontent.com/trynoice/android-app/0.2.1/.travis.yml"
+  data-view="https://github.com/trynoice/android-app/blob/0.2.1/.travis.yml#L29-L33"
 ></pre>
 ```
 
