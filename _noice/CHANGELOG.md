@@ -1,5 +1,6 @@
 ---
 layout: redirect
 redirect:
-  to: https://trynoice.com/changelog/archived
+  to: https://github.com/trynoice/android-app/releases
+in_sitemap: false
 ---

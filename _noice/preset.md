@@ -1,5 +1,6 @@
 ---
 layout: compress
+in_sitemap: false
 ---
 
 # Noice: Natural calming noise
