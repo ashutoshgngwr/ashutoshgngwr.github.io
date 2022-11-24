@@ -11,7 +11,7 @@
       <span itemprop="name headline">{{ post.title | escape_once }}</span>
     </a>
     {%- unless post.draft %}
-    <small>
+    <small style="white-space: nowrap;">
       &mdash;
       <time datetime="{{ post.date | date: '%FT%T%z' }}" itemprop="datePublished">
         {{ post.date | date: "%B %e" }}
