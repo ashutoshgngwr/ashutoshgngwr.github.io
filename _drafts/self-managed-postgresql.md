@@ -5,15 +5,15 @@ mathjax: false
 title: Setting up a self-managed PostgreSQL server on AWS EC2 for a small-scale application
 ---
 
-Recently, I moved Noice to a subscription-based service model. With it came a
-lot of development and cost optimisation challenges. One of these challenges was
-hosting a database for the backend service. I chose PostgreSQL because of my
-previous experience with it. I also had unused AWS credits, so I deliberately
-limited my options to either a self-managed server on AWS EC2 or a managed
-server on AWS RDS. Being a small-scale operation, RDS didn't seem like a
-cost-effective solution. Comparing the on-demand cost of `m1.large` instances
-for EC2 and RDS yields a 40% markup in RDS pricing. Therefore, I started
-exploring the self-managed option.
+Recently, I moved [Noice](https://trynoice.com) to a subscription-based service
+model. With it came a lot of development and cost optimisation challenges. One
+of these challenges was hosting a database for the backend service. I chose
+PostgreSQL because of my previous experience with it. I also had unused AWS
+credits, so I deliberately limited my options to either a self-managed server on
+AWS EC2 or a managed server on AWS RDS. Being a small-scale operation, RDS
+didn't seem like a cost-effective solution. Comparing the on-demand cost of
+`m1.large` instances for EC2 and RDS yields a 40% markup in RDS pricing.
+Therefore, I started exploring the self-managed option.
 
 During the initial development cycle, I started with a spot machine running
 PostgreSQL 14. I needed it to develop and test the backend service, but it also

@@ -7,10 +7,10 @@ tags: android tests instrumented-tests espresso gradle bash
 title: Displaying detailed results for Android instrumented tests on the terminal
 ---
 
-I run instrumented tests for an Android app in a continuous integration
-environment. The output of the Gradle tasks that run these tests is often too
-trimmed for valuable debugging insights. Moreover, the flakiness of the
-instrumented tests on virtual Android devices makes matters even worse. For
+I run instrumented tests for [Noice](https://trynoice.com) in a continuous
+integration environment. The output of the Gradle tasks that run these tests is
+often too trimmed for valuable debugging insights. Moreover, the flakiness of
+the instrumented tests on virtual Android devices makes matters even worse. For
 example, consider the following output of a test suite run.
 
 ```console
