@@ -72,8 +72,15 @@ ol {
   padding: 0 0 0 2em;
 }
 
-li p {
-  @extend %reset-margins-touching-parent-edges;
+li {
+  margin-bottom: 0.25em;
+  margin-top: 0.25em;
+
+  p,
+  pre {
+    margin-bottom: 0.75em;
+    margin-top: 0.75em;
+  }
 }
 
 blockquote {
