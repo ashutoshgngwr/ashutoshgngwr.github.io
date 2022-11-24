@@ -1,7 +1,9 @@
 ---
+date: 2022-11-24 23:36:07 +0530
 image: false
 layout: post
 mathjax: false
+tags: pgsql postgres postgresql production devops aws ec2 self-managed wal-archiving backup restore
 title: Setting up a self-managed PostgreSQL server on AWS EC2 for a small-scale application
 ---
 
@@ -109,9 +111,6 @@ wal_level = replica
 archive_mode = on
 archive_command = '/usr/local/bin/wal-g-helper wal-push "%p" >> /var/log/wal-g/wal-push.log 2>&1'
 archive_timeout = '30min'
-
-# recovery config
-restore_command = '/usr/local/bin/wal-g-helper wal-fetch "%f" "%p" >> /var/log/wal-g/wal-fetch.log 2>&1'
 ```
 
 Next, I restarted the PostgreSQL server for the updated configuration to take
@@ -121,8 +120,13 @@ effect.
 sudo systemctl restart postgresql.service
 ```
 
+To validate, I manually ran the script to perform the full backup. As
+expected, I found the objects corresponding to a physical backup under the
+`<S3_PREFIX>/basebackups_005/` S3 prefix. I also found objects corresponding to
+archived WAL under the `<S3_PREFIX>/wal_005/` prefix.
+
 The instructions for using the backup to spin up a replica or restore an
-existing server are simple.
+existing server are also simple.
 
 - Stop the PostgreSQL systemd service.
 
@@ -130,18 +134,25 @@ existing server are simple.
   sudo systemctl stop postgresql.service 
   ```
 
-- Remove the data directory and restore the latest full (physical) backup.
+- Remove the data directory and restore the latest physical backup. Restart the
+  server after this step if the WAL restoration isn't needed.
 
   ```console
   sudo rm -rf /var/lib/postgresql/14/main
   sudo -u postgres wal-g-helper backup-fetch /var/lib/postgresql/14/main LATEST
   ```
 
-- Optionally configure a recovery target time and action for performing
-  point-in-time recovery using the WAL archive. See
-  [this](https://www.postgresql.org/docs/14/runtime-config-wal.html#RUNTIME-CONFIG-WAL-RECOVERY-TARGET).
+- Optionally configure the action to restore the WAL to recover data since the
+  latest physical backup. See
+  [this](https://www.postgresql.org/docs/14/runtime-config-wal.html#RUNTIME-CONFIG-WAL-RECOVERY-TARGET)
+  if you want to perform a point-in-time recovery instead.
 
-- Restart the server in recovery mode.
+  ```conf
+  restore_command = '/usr/local/bin/wal-g-helper wal-fetch "%f" "%p" >> /var/log/wal-g/wal-fetch.log 2>&1'
+  ```
+
+- Create a recovery signal to restart the PostgreSQL server in recovery mode and
+  restart the systemd unit.
 
   ```console
   sudo -u postgres touch /var/lib/postgresql/14/main/recovery.signal
