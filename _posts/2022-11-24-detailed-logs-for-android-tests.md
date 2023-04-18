@@ -27,9 +27,10 @@ Tests on android-30(AVD) - 11 failed: There was 1 failure(s).
 
 Notice the missing salient details here, like the line number for the failed
 assertion or the name of the test that came before the failed test. It doesn't
-happen when running the test suite using Android Studio. I get a detailed stack
-track there. When I examined the logs that the virtual device generated during
-the test suite run, I found that the test runner indeed logs verbose messages.
+happen when running the test suite using Android Studio. I get a detailed
+stacktrace there. When I examined the logs that the virtual device generated
+during the test suite run, I found that the test runner indeed logs verbose
+messages.
 
 ```console
 E/TestRunner: failed: emptyListIndicator(com.github.ashutoshgngwr.noice.fragment.AlarmsFragmentTest)
