@@ -1,6 +1,6 @@
 ---
 layout: compress
-title: Résumé
+title: Resume
 in_sitemap: false
 robots: noindex
 ---
@@ -42,7 +42,7 @@ robots: noindex
   <section id="{{ section.title | slugify }}">
     <h2 class="section-title">{{ section.title }}</h2>
     {%- if section.body %}
-    <div class="section-body">{{ section.body | markdownify }}</div>
+    {{ section.body | markdownify }}
     {%- endif %}
     {%- for subsection in section.subsections %}
     <div class="subsection">
@@ -62,9 +62,7 @@ robots: noindex
         {%- endif %}
       </div>
       {%- if subsection.body %}
-      <div class="subsection-body">
-        {{ subsection.body | markdownify }}
-      </div>
+      {{ subsection.body | markdownify }}
       {%- endif %}
 
     </div>

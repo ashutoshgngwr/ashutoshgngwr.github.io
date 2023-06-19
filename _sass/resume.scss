@@ -3,13 +3,11 @@
 @import "base/colors";
 
 @page {
-  margin: 0.5in 0.67in;
+  margin: 0.5in 0.667in;
 }
 
-html,
-body {
+:root {
   font-size: 16px;
-  line-height: 1.33;
 
   @media print {
     font-size: 10pt;
@@ -18,11 +16,14 @@ body {
 
 body {
   box-sizing: border-box;
-  max-width: 50rem;
+  max-width: 52rem;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
   padding: 1rem;
+
+  font-size: 1rem;
+  line-height: 1.4;
 
   @media print {
     max-width: 100%;
@@ -121,7 +122,6 @@ section {
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      @extend %default-margin;
 
       .subsection-title,
       .subsection-timeline {
@@ -139,28 +139,17 @@ section {
 
       .subsection-timeline {
         font-size: 0.9rem;
-        color: var(--color-text-secondary);
+        font-weight: 500;
       }
     }
-  }
 
-  .section-body,
-  .subsection-body {
-    @media print {
-      position: relative;
-      page-break-inside: avoid;
-    }
+    & > p {
+      text-align: justify;
 
-    a {
       @media print {
-        color: var(--color-text);
-        font-style: italic;
+        position: relative;
+        page-break-inside: avoid;
       }
-    }
-
-    ul li > ul {
-      margin-top: 0.25rem;
-      margin-bottom: 0.25rem;
     }
   }
 }

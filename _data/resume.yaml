@@ -1,5 +1,5 @@
 title: Ashutosh Gangwar
-url: https://ashutoshgngwr.github.io
+url: /
 
 contacts:
   - title: ashutoshgngwr@gmail.com
@@ -10,85 +10,110 @@ contacts:
     url: https://linkedin.com/in/ashutoshgngwr
 
 sections:
+  - title: Summary
+    body: |
+      I am a self-driven backend engineer with a working knowledge of DevOps,
+      Android and Web frontend domains, who is passionate about building things
+      from scratch. I am a hands-on learner with a generalist approach to
+      software engineering, having versatile experience working with diverse
+      technologies.
+
   - title: Work Experience
     subsections:
-      - title: Zauba Technologies, Bangalore IN
+      - title: "Noice: Natural calming noise, Bengaluru IN"
+        subtitle: Founder
+        url: https://trynoice.com
+        timeline: 2019 - Present
+        body: |
+          I built an app to create ambient sound environments, starting as a
+          side project and turning into a solopreneurship venture. I architected
+          a robust backend, including a [REST
+          API](https://github.com/trynoice/api), using PostgreSQL, Spring Boot
+          and Nginx with extensive automated testing, running entirely on AWS
+          EC2, serving 1.7 million monthly requests on average and witnessing
+          just one operational incident in the past six months. I wrote the
+          [Android app](https://github.com/trynoice/android-app) in Kotlin using
+          modern architecture components with automated testing. I made a
+          [browser app](https://github.com/trynoice/web-app-v0), a [Chromecast
+          Receiver app](https://github.com/trynoice/chromecast-receiver-app) and
+          a [website](https://github.com/trynoice/website) using React, Gatsby
+          and Parcel. To achieve gapless playback in browsers, I created a
+          custom audio encoding format using MP3 and a [TypeScript
+          module](https://github.com/trynoice/january) to play it. I deployed
+          release automation across all components to shorten the development
+          cycle. As a result of these efforts, Noice currently has over 9k
+          monthly active users. The Android app has a Play Store rating of 4.4/5
+          and over 730 GitHub stars. _[Stats as of June 2023]_
+
+      - title: Zauba Technologies, Bengaluru IN
         subtitle: SDE 1 &ndash; Cloud Computing R&amp;D
         url: https://web.archive.org/web/20200725050709/https://zauba.company/
-        timeline: Aug 2019 - Feb 2020
+        timeline: 2019 - 2020
         body: |
-          - Implemented the metrics aggregation and caching layer for scheduling
-            container workloads
-          - Set up cluster monitoring and observability for internal components
-            and user workloads
-          - Set up automation to deploy and scale Ceph storage clusters on AWS
-            using Ceph Ansible
-          - Took initiatives to set up and manage development infrastructure on
-            AWS using Kops and Ceph Ansible
+          I contributed significantly to an early-stage PaaS product within a
+          self-directed team under the founder's supervision. I built a metrics
+          aggregation and caching layer to ensure efficient resource allocation
+          for end-user container workloads. I also established a cluster
+          monitoring and observability stack for internal modules and user
+          workloads and spearheaded automation efforts to deploy and scale Ceph
+          storage clusters. I also took the initiative to set up and maintain
+          the development infrastructure to improve the developer experience.
 
       - title: FOSSEE, IIT Bombay, Mumbai IN
         subtitle: Summer Fellow
         url: https://fosse.in/
-        timeline: Jun 2018 - Jul 2018
+        timeline: 2018
         body: |
-          - Patched known bugs in [eSim](https://esim.fossee.in/home), an
-            electronic circuit simulation toolkit
-          - Resolved open tickets in [Kicad](https://www.kicad.org/), an EDA
-            toolkit and the principal dependency of eSim
-          - Set up build automation to simplify packaging processes for eSim
-            on target operating systems
+          I focused on [eSim](https://esim.fossee.in/home), an electronic
+          circuit simulation toolkit. I addressed several bugs, resolved open
+          tickets in its main dependency, [Kicad](https://www.kicad.org/), and
+          built automation to streamline deployment across different operating
+          systems.
 
-  - title: Projects and Open-source
-    subsections:
-      - title: Noice for Android
-        subtitle: Creator
-        url: https://github.com/trynoice
-        timeline: Jun 2019 - Present
-        body: |
-          - Built an Android application in Kotlin to create ambient sound
-            environments using recorded samples
-          - Implemented a Chromecast Web Receiver Application in JavaScript
-            (TypeScript)
-          - Wrote unit and UI tests and built CI/CD pipelines for both Android
-            and Chromecast Receiver apps
-          - Serving 6.4k active users on Play Store with 4.6/5 average user
-            rating and 470 GitHub stars (as of October 2021)
+  - title: Open-source
+    body: |
+      - Contributed substantially to
+        [go-githubactions](https://github.com/sethvargo/go-githubactions), an
+        unofficial Golang SDK for GitHub Actions:
+        [PR#5](https://github.com/sethvargo/go-githubactions/pull/5),
+        [PR#6](https://github.com/sethvargo/go-githubactions/pull/6),
+        [PR#10](https://github.com/sethvargo/go-githubactions/pull/10),
+        [PR#11](https://github.com/sethvargo/go-githubactions/pull/11) and
+        [PR#48](https://github.com/sethvargo/go-githubactions/pull/48).
 
-      - title: Udyat
-        subtitle: Founder
-        url: https://udyat-miet.github.io
-        timeline: Jul 2018 - Jun 2019
-        body: |
-          - Collaborated with faculties and peers to create a software
-            development learning group
-          - Collaborated with peers to host tech seminars, workshops and
-            coding competitions at the department
+      - Created
+        [validate-fastlane-supply-metadata](https://github.com/ashutoshgngwr/validate-fastlane-supply-metadata),
+        a GitHub Action to check Fastlane metadata for Android apps.
 
-      - title: swiftp, a FTP-over-LAN server for Android
-        subtitle: Contributor
-        url: https://github.com/ppareit/swiftp/pulls?q=is%3Apr+author%3Aashutoshgngwr+is%3Aclosed
-        timeline: May 2017 – Jun 2018
-        body: |
-          - Implemented a module for managing FTP users to facilitate concurrent
-            sessions from many users at once
-          - Implemented FTP server extensions for partial file transfer and
-            post-transfer file integrity verification
-          - Implemented visual features: a quick-settings tile, app theme
-            variants and a landing page on the web
+      - Enabled XML styling/theming for the custom view in the
+        [android-about-page](https://github.com/medyo/android-about-page)
+        library: [PR#156](https://github.com/medyo/android-about-page/pull/156).
+
+      - Added the following to
+        [swiftp](https://github.com/ppareit/swiftp), an FTP-over-LAN server for
+        Android:
+        - Concurrent user sessions:
+          [PR#123](https://github.com/ppareit/swiftp/pull/123).
+        - FTP server extensions for partial file transfer and post-transfer
+          integrity check: [PR#96](https://github.com/ppareit/swiftp/pull/96).
+        - A quick-settings tile:
+          [PR#93](https://github.com/ppareit/swiftp/pull/93), a landing page:
+          [PR#114](https://github.com/ppareit/swiftp/pull/114) and day/night
+          mode: [PR#109](https://github.com/ppareit/swiftp/pull/109).
 
   - title: Education
     subsections:
       - title: Meerut Institute of Engineering & Technology
         subtitle: Dr. A.P.J. Abdul Kalam Technical University
         url: https://miet.ac.in
-        timeline: Aug 2015 - Jul 2019
+        timeline: 2015 - 2019
         body: Bachelor of Technology in Computer Science and Engineering
 
-  - title: Skills and Interests
+  - title: Miscellaneous
     body: |
-      - **Skills**: containerised workloads, infrastructure management, API
-        design
-      - **Programming Languages**: **proficient**: Golang, Java, Kotlin,
-        **familiar**: C, Python, Bash, JavaScript, Dart
-      - **Platforms**: **proficient**: Kubernetes, Docker, AWS, Android,
-        PostgreSQL **familiar**: Spring, GCP, React, Flutter
+      - **Skills**: Backend and Full Stack Development, API Design, Automated
+        Testing, Infrastructure Management
+      - **Programming Languages**: Golang, Java, Kotlin, C, Python, Bash,
+        JavaScript/TypeScript
+      - **Platforms**: Kubernetes, Docker, AWS, GCP, Spring Boot, Android,
+        Linux, PostgreSQL, React, Gatsby
