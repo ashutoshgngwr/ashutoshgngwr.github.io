@@ -46,14 +46,34 @@ often. There are some best practices mentioned in [MDN][sw-mdn] and [Google
 Developers][sw-lifecycle] articles, but here's how I did it. The
 `self.skipWaiting()` call activates it as soon as it finishes installing.
 
-The following snippet also contains some Liquid (Jekyll) template code embedded
-in JavaScript comments. The template essentially generates a list of static
-files to add to cache during service worker installation.
+> The following snippet also contains some Liquid (Jekyll) template code
+> embedded in JavaScript comments. The template essentially generates a list of
+> static files to add to cache during service worker installation.
 
-<pre data-start="5" data-end="24" data-lang="javascript"
-  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/service-worker.js"
-  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/service-worker.js#L5-L24"
-></pre>
+```js
+{% raw %}
+self.addEventListener("install", function (event) {
+  event.waitUntil(
+    caches.open(CACHE).then(function (cache) {
+      return (
+        cache
+          .addAll([
+            /* {%- for file in site.static_files -%}
+                {%- if file.path contains '/assets/static' %} */
+            "{{ file.path | relative_url }}",
+            /*  {%- endif -%}
+               {%- endfor %} */
+            "/site.webmanifest",
+            "/offline",
+          ])
+          /* Don't wait for active clients to close before updating */
+          .then(self.skipWaiting())
+      );
+    })
+  );
+});
+{% endraw %}
+```
 
 #### Activate
 
@@ -64,10 +84,11 @@ cleanup because this site doesn't generate that much data.
 new version of the service worker (if available) and takes over any active
 clients that were previously being handled by an older version.
 
-<pre data-start="26" data-end="28" data-lang="javascript"
-  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/service-worker.js"
-  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/service-worker.js#L26-L28"
-></pre>
+```js
+self.addEventListener("activate", function (event) {
+  event.waitUntil(self.clients.claim());
+});
+```
 
 #### Fetch
 
@@ -78,25 +99,56 @@ different resources. The first one serves the assets directly from the cache and
 triggers a cache update for every request. The second serves all other resources
 directly from the network and caches them for offline access.
 
-<pre data-start="30" data-end="44" data-lang="javascript"
-  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/service-worker.js"
-  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/service-worker.js#L30-L44"
-></pre>
+```js
+self.addEventListener("fetch", function (event) {
+  /* only intercept requests from self origin or github content. */
+  if (
+    !event.request.url.startsWith(self.location.origin) &&
+    !event.request.url.startsWith("https://raw.githubusercontent.com")
+  ) {
+    return;
+  }
 
-<pre data-start="46" data-end="55" data-lang="javascript"
-  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/service-worker.js"
-  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/service-worker.js#L46-L55"
-></pre>
+  event.respondWith(
+    event.request.url.startsWith(`${self.location.origin}/assets/static`)
+      ? serveCacheThenRevalidate(event)
+      : serveNetworkAndUpdateCache(event)
+  );
+});
 
-<pre data-start="57" data-end="63" data-lang="javascript"
-  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/service-worker.js"
-  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/service-worker.js#L57-L63"
-></pre>
+function serveCacheThenRevalidate(event) {
+  return caches.match(event.request).then(function (response) {
+    if (response) {
+      event.waitUntil(updateCache(event.request));
+      return response;
+    } else {
+      return updateCache(event.request);
+    }
+  });
+}
 
-<pre data-start="65" data-end="77" data-lang="javascript"
-  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/service-worker.js"
-  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/service-worker.js#L65-L77"
-></pre>
+function serveNetworkAndUpdateCache(event) {
+  return updateCache(event.request).catch(function () {
+    return caches.match(event.request).then(function (response) {
+      return response || caches.match("/offline");
+    });
+  });
+}
+
+function updateCache(request) {
+  return caches.open(CACHE).then(function (cache) {
+    return fetch(request).then(function (response) {
+      if (!response.ok) {
+        return response;
+      }
+
+      return cache.put(request, response.clone()).then(function () {
+        return response;
+      });
+    });
+  });
+}
+```
 
 #### Sync
 
@@ -117,13 +169,57 @@ To make your PWA installable (browsers asking users to add a website to home
 screen), you'll need to add a [Web Manifest][web-man-mdn] in addition to the
 service worker. It is a JSON file with the [predefined schema][web-man-mdn].
 
-**Note**: I am using Liquid (Jekyll) template code to inject appropriate values
-when GitHub Pages generates my site.
+> I am using Liquid (Jekyll) template code to inject appropriate values when
+> GitHub Pages generates my site.
 
-<pre data-lang="json"
-  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/webmanifest.json"
-  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/webmanifest.json"
-></pre>
+```json
+{% raw %}
+{
+  "name": "{{ site.x.author }}",
+  "short_name": "{{ site.x.social | where: 'name', 'twitter' | map: 'username' }}",
+  "display": "standalone",
+  "description": "{{ site.x.description }}",
+  "start_url": "{{ '/' | relative_url }}",
+  "scope": "{{ '/' | relative_url }}",
+  "dir": "ltr",
+  "lang": "en-GB",
+  "theme_color": "#000000",
+  "background_color": "#fbfbfb",
+  "serviceworker": {
+    "src": "{{ '/service-worker.js' | relative_url }}",
+    "scope": "{{ '/' | relative_url }}",
+    "update_via_cache": "none"
+  },
+  "icons": [
+    {
+      "src": "{{ '/assets/static/img/favicon-16x16.png' | relative_url }}",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "{{ '/assets/static/img/favicon-32x32.png' | relative_url }}",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "{{ '/assets/static/img/favicon-192x192.png' | relative_url }}",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "{{ '/assets/static/img/favicon-384x384.png' | relative_url }}",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "{{ '/assets/static/img/favicon-512x512.png' | relative_url }}",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
+{% endraw %}
+```
 
 ## Conclusion
 

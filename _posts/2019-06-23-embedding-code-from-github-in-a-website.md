@@ -7,6 +7,9 @@ image: embedding-code-from-github-0.jpg
 redirect_from: /2019/06/23/embedding-code-from-github-in-a-website
 ---
 
+> This doesn't work anymore! The CORS policy of `github.com` disallows
+> cross-origin requests from `github.io` and other domains.
+
 I've spent the past few days redesigning my website which is built using
 [Jekyll][jekyll] and [GitHub pages][github-pages]. In my [last post][last-post],
 I had to embed code samples from one of my repositories and things got a little
@@ -69,7 +72,7 @@ to make that happen.
 
 - Find all `<pre>` elements in the page that have the `data-src` attribute
 - For each of those elements
-  - Download the code from the URL in the `data-url` attribute
+  - Download the code from the URL in the `data-src` attribute
   - Slice up the downloaded code from the `data-start` to the `data-end` position
   - Create a `<code>` element with the sliced up code in it
   - Insert the newly created `<code>` element into the existing `<pre>` element
@@ -81,25 +84,79 @@ to make that happen.
 
 ### The code
 
-<pre data-start="190" data-end="217" data-lang="javascript"
-  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/scripts.html"
-  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/scripts.html#L190-L217"
-></pre>
+```js
+function createFileLinkElement(url) {
+  let element = document.createElement("a");
+  element.innerHTML = "View file";
+  element.href = url;
 
-<pre data-start="150" data-end="158" data-lang="javascript"
-  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/scripts.html"
-  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/scripts.html#L150-L158"
-></pre>
+  let container = document.createElement("div");
+  container.classList.add("view-file");
+  container.appendChild(element);
+  return container;
+}
 
-<pre data-start="128" data-end="148" data-lang="javascript"
-  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/scripts.html"
-  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/scripts.html#L128-L148"
-></pre>
+function normalizeWhiteSpace(code) {
+  let lines = code.split("\n");
+  if (lines.length < 1) {
+    return code;
+  }
 
-<pre data-start="160" data-end="169" data-lang="javascript"
-  data-src="https://raw.githubusercontent.com/ashutoshgngwr/ashutoshgngwr.github.io/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/scripts.html"
-  data-view="https://github.com/ashutoshgngwr/ashutoshgngwr.github.io/blob/edeeb73916d5332a930b3314d727cd389ef5e958/_includes/scripts.html#L160-169"
-></pre>
+  let spacesToRemove = Infinity;
+  for (let i = 0; i < lines.length; i++) {
+    if (lines[i].length < 1) {
+      continue;
+    }
+
+    spacesToRemove = Math.min(spacesToRemove, lines[i].search(/\S|$/));
+  }
+
+  return lines
+    .map(function (v) {
+      return v.substring(spacesToRemove);
+    })
+    .join("\n");
+}
+
+function createCodeElement(code, language) {
+  let element = document.createElement("code");
+  element.innerHTML = normalizeWhiteSpace(code);
+  if (language) {
+    element.classList.add(`language-${language}`);
+  }
+
+  return element;
+}
+
+addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll("pre[data-src]").forEach(function (item) {
+    let url = item.getAttribute("data-src");
+    let viewURL = item.getAttribute("data-view") || url;
+    let start = parseInt(item.getAttribute("data-start") || 1);
+    let end = parseInt(item.getAttribute("data-end") || -1);
+    let language = item.getAttribute("data-lang");
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", url);
+    xhr.addEventListener("load", function () {
+      let code = `error: unable to load the resource at "${url}"`;
+      if (this.responseText) {
+        code = this.responseText
+          .split("\n")
+          .slice(start - 1, end)
+          .join("\n");
+      }
+
+      let codeElement = createCodeElement(code, language);
+      hljs.highlightBlock(codeElement);
+      item.appendChild(codeElement);
+      item.appendChild(createFileLinkElement(viewURL));
+    });
+
+    xhr.send();
+  });
+});
+```
 
 [jekyll]: https://jekyllrb.com/
 [github-pages]: https://pages.github.com/
